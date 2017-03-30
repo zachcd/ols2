@@ -11,7 +11,7 @@ _______
 
 ### React - Redux - Socket.io-client/XHR
 
-- React is the SPA view framework
+#### React is the SPA view framework
 
 * SPAs are single page applications.  They serve a single webpage to the user that uses Javascript to get site data from an API.
 This lets you update information live and the user's site experience requires no loading of new pages.
@@ -19,13 +19,13 @@ This lets you update information live and the user's site experience requires no
 * View frameworks have many different kinds, React is a very popular and hyped up one managed by Facebook.
 
 
-- Redux is the data management store thingy
+#### Redux is the data management store thingy
 
 * Redux is the thing in between React and the data.  It does actions on the data and moves it around and makes it available to React and passes it to the server.
 You can think of it as a data service that is available across the entire site and maintains the same data store across different pages
 
 
-- Socket.io is the WebSocket library
+#### Socket.io is the WebSocket library
 
 * WebSocket's allow close to real time transmission of data.  It'll be how we do chat and comments on the site.
 

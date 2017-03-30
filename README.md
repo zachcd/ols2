@@ -35,19 +35,19 @@ _______
 
 ### Koa - Socket.io - Mongoose - Passport
 
-- Koa is the NodeJS server HTTP middleware framework for NodeJS
+#### Koa is the NodeJS server HTTP middleware framework for NodeJS
 
 * Koa lets us take http requests and other requests and serve stuff back that we set and decide on with JS.  
 * Koa is very lightweight compared to Express and doesn't include anything out of the box.
 
-- Socket.io is the WebSocket library
+#### Socket.io is the WebSocket library
 
 * Socket.io has a server-side part to interact with the client.
 
-- Mongoose is our Mongo ORM
+#### Mongoose is our Mongo ORM
 
 * Mongoose communicates with our Mongo database which is a doc-store style db, which means we don't have to do much if we want to change our database setup
 
-- Passport is our authentication management
+#### Passport is our authentication management
 
 * Passport is pretty much the best authentication system afaik.

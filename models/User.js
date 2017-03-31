@@ -9,5 +9,5 @@ const userSchema = new Schema({
 	elo: Number,
 	team: String
 });
-console.log('user registered');
+
 module.exports = mongoose.model('User', userSchema);

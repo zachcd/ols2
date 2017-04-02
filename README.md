@@ -51,3 +51,6 @@ _______
 #### Passport is our authentication management
 
 * Passport is pretty much the best authentication system afaik.
+
+## Discord Bot
+_______

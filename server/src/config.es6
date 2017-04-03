@@ -10,7 +10,10 @@ const chat = new IO('chat')
 
 app.use(logger())
 
-io.attach(app)
+// Everything else socket
+io.attach(app
+
+// Chat socket
 chat.attach(app)
 
 /**
@@ -32,6 +35,7 @@ io.on( 'disconnect', ctx => {
     numConnections: io.connections.size
   })
 })
+
 io.on( 'data', ( ctx, data ) => {
   console.log( 'data event', data )
   console.log( 'ctx:', ctx.event, ctx.data, ctx.socket.id )
@@ -40,10 +44,12 @@ io.on( 'data', ( ctx, data ) => {
     message: 'response from server'
   })
 })
+
 io.on( 'ack', ( ctx, data ) => {
   console.log( 'data event with acknowledgement', data )
   ctx.acknowledge( 'received' )
 })
+
 io.on( 'numConnections', packet => {
   console.log( `Number of connections: ${ io.connections.size }` )
 })
@@ -54,6 +60,7 @@ io.on( 'numConnections', packet => {
 chat.on( 'connection', ctx => {
   console.log( 'Joining chat namespace', ctx.socket.id )
 })
+
 chat.on( 'message', ctx => {
   console.log( 'chat message received', ctx.data )
 
@@ -66,6 +73,5 @@ chat.on( 'message', ctx => {
   // Emits to just this socket
   ctx.socket.emit( 'message', 'ok connections:chat:emit' )
 })
-
 
 app.listen( process.env.PORT || 3200)

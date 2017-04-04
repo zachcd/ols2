@@ -15,7 +15,6 @@
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "koa-logger": "^2.0.1",
-    "koa-socket": "^4.4.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.9.2",
     "mongoose-validator": "^1.2.5",
@@ -34,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "node server/server.js",
+    "server": "node server/babel.server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

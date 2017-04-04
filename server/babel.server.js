@@ -1,2 +1,2 @@
 require("babel-core/register");
-require("./src/config.es6");
+require("./src/server.js");

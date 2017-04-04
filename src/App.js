@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mainHeader from 'navigation/mainHeader.js';
+import mainHeader from './navigation/mainHeader.js';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +10,6 @@ class App extends Component {
           <mainHeader>
           </mainHeader>
         </div>
-
       </div>
     );
   }

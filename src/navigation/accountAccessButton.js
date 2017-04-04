@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import './accountAccessButton.css';
 
 class accountAccessButton extends Component {
+  props: {
+    isLoggedIn: Boolean,
+    username: String
+  }
+
+  static mapStateToProps (state) {
+    console.log(state);
+    return {
+      isLoggedIn: state.user.loggedIn,
+      username: state.user.username
+    }
+  }
   render() {
-    if(isLoggedIn){
+    if(this.props.isLoggedIn){
         return(
           <span id="user">
-          {{username}}
+          {this.props.username}
           </span>
         )
       } else {
@@ -18,9 +32,4 @@ class accountAccessButton extends Component {
   }
 }
 
-accountAccessButton.propTypes = {
-  isLoggedIn: PropTypes.bool.isLoggedIn,
-  username: PropTypes.string.username
-}
-
-export default accountAccessButton
+export default connect(accountAccessButton.mapStateToProps)(accountAccessButton)

@@ -1,6 +1,3 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-
 const mongoose = require('mongoose');
 const dbuser = process.argv[3];
 const dbpass = process.argv[4];

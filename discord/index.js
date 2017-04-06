@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const config = require('config.json')('config.json');
 const lib = require('./lib');
 
 bot.on('message', msg => {
@@ -89,5 +90,4 @@ bot.on('ready', () => {
 
 bot.on('error', e => { console.error(e); });
 
-//TODO find another way to save key
-bot.login(process.argv[2]);
+bot.login(config.botToken);

@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-
+const config = require('config.json')('config.json');
 const mongoose = require('mongoose');
-const dbuser = process.argv[3];
-const dbpass = process.argv[4];
 
 //register models
 const Team = require('../models/Team');
@@ -11,8 +9,7 @@ const Player = require('../models/Player');
 const Contract = require('../models/Contract');
 
 //TODO change?
-mongoose.connect('mongodb://' + dbuser +':' + dbpass +
-'@ds147510.mlab.com:47510/olsdev');
+mongoose.connect(config.mongodbUri);
 
 function createPlayer(a_ign, a_elo, a_isOwner, cb) {
 	//create player

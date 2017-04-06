@@ -4,7 +4,7 @@ const playerSchema = require('./Player').schema;
 
 const teamSchema = new Schema({
   name: String,
-	owner: String,
+	owner: playerSchema,
 	players: [playerSchema]
 });
 

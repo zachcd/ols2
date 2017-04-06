@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const lib = require('./lib');
+
 bot.on('message', msg => {
 
   let prefix='-'
@@ -27,7 +28,10 @@ bot.on('message', msg => {
 			const elo = parseInt(args[1]);
 			const isOwner = (args[2] == 'true');
 
-			msg.channel.sendMessage(lib.createPlayer(ign, elo, isOwner));
+			lib.createPlayer(ign, elo, isOwner, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
+
 		}
 	}
 
@@ -39,7 +43,9 @@ bot.on('message', msg => {
 			const name = args[0];
 			const ign = args[1];
 
-			msg.channel.sendMessage(lib.createTeam(name, ign));
+			lib.createTeam(name, ign, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
 		}
 	}
 
@@ -50,7 +56,9 @@ bot.on('message', msg => {
 		else {
 			const teamName = args[0];
 
-			msg.channel.sendMessage(lib.listPlayers(teamName));
+			lib.listPlayers(teamName, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
 		}
 	}
 
@@ -62,7 +70,9 @@ bot.on('message', msg => {
 			const playerName = args[0];
 			const teamName = args[1];
 
-			msg.channel.sendMessage(lib.addPlayerToTeam(playerName, teamName));
+			lib.addPlayerToTeam(playerName, teamName, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
 		}
 	}
 

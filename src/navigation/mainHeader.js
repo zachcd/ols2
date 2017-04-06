@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import accountAccessButton from './accountAccessButton';
+import AccountAccessButton from './accountAccessButton';
+import SectionNavigation from './SectionNavigation';
+import { connect } from 'react-redux'
 
-class mainHeader extends Component {
+class MainHeader extends Component {
   render() {
     return (
       <div>
-      <accountAccessButton username="" isLoggedIn={false}>
-      </accountAccessButton>
+      <AccountAccessButton username="BeardedDog" isLoggedIn={false}>
+      </AccountAccessButton>
+      <SectionNavigation isLoggedIn={false}>
+      </SectionNavigation>
       </div>
     )
   }
 
 }
 
-export default mainHeader
+export default MainHeader

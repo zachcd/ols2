@@ -4,7 +4,7 @@ const dbpass = process.argv[4];
 
 //register models
 const Team = require('../models/Team');
-const User = require('../models/User');
+const Player = require('../models/Player');
 const Contract = require('../models/Contract');
 
 //TODO change?
@@ -14,9 +14,9 @@ mongoose.connect('mongodb://' + dbuser +':' + dbpass +
 function createPlayer(a_ign, a_elo, a_isOwner) {
 	let returnMsg = 'Unspecified Error';
 
-	//create user
-	let newPlayer = new User({
-		ign: a_ign,
+	//create player
+	let newPlayer = new Player({
+		name: a_ign,
 		elo: a_elo,
 		isOwner: a_isOwner
 	});

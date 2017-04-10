@@ -7,7 +7,7 @@ class SectionNavigation extends Component {
       isLoggedIn: Boolean
     }
     render() {
-      if (isLoggedIn) {
+      if (this.props.isLoggedIn) {
         return(
           <LoggedNavigation>
           </LoggedNavigation>
@@ -24,9 +24,11 @@ class SectionNavigation extends Component {
 class LoggedNavigation extends Component {
   render() {
     return(
+      <div>
       <Link to="/team"> My Team </Link>
       <Link to="/schedule"> My Schedule </Link>
       <Link to="/stats"> My Stats </Link>
+      </div>
     )
   }
 }
@@ -34,8 +36,11 @@ class LoggedNavigation extends Component {
 class NoUserNavigation extends Component {
   render() {
     return(
+      <div>
       <Link to="/team">Teams </Link>
-      <Link to=""
+      <Link to="/schedule">Schedule </Link>
+      <Link to="/stats"> Stats </Link>
+      </div>
     )
   }
 }

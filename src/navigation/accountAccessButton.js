@@ -11,8 +11,8 @@ class AccountAccessButton extends Component {
     if(this.props.isLoggedIn){
         return(
           <button id="user">
-          {this.props.username}
-        </button>
+            {this.props.username}
+          </button>
         )
       } else {
         return(

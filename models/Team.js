@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const playerSchema = require('./Player').schema;
+const userSchema = require('./User').schema;
 
 const teamSchema = new Schema({
   name: String,
-	owner: playerSchema,
+	owner: [userSchema],
 	players: [playerSchema]
 });
 

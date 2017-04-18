@@ -6,7 +6,7 @@ const playerSchema = new Schema({
   name: String,
 	elo: Number,
   team: String,
-  user: [userSchema]
+  user: userSchema
 });
 
 module.exports = mongoose.model('Player', playerSchema);

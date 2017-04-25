@@ -5,9 +5,9 @@ const userSchema = new Schema({
 	isOwner: Boolean,
 	isPlayer: Boolean,
 	isAdmin: Boolean,
-	ign: String,
 	elo: Number,
-	team: String
+	team: String,
+  accounts: [{ type: Schema.Types.ObjectId, ref: 'Player'}]
 });
 
 module.exports = mongoose.model('User', userSchema);

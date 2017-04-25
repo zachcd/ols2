@@ -7,7 +7,7 @@ const userSchema = new Schema({
 	isAdmin: Boolean,
 	elo: Number,
 	team: String,
-  accounts: [Schema.Types.ObjectId]
+  accounts: [{ type: Schema.Types.ObjectId, ref: 'Player'}]
 });
 
 module.exports = mongoose.model('User', userSchema);

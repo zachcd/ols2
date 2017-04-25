@@ -5,8 +5,8 @@ const userSchema = require('./User').schema;
 
 const teamSchema = new Schema({
   name: String,
-	owner: [userSchema],
-	players: [playerSchema]
+	owner: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+	players: [{ type: Schema.Types.ObjectId, ref: 'Player'}]
 });
 
 module.exports = mongoose.model('Team', teamSchema);

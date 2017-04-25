@@ -6,7 +6,7 @@ const playerSchema = new Schema({
   name: String,
 	elo: Number,
   team: String,
-  user: userSchema
+  user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Player', playerSchema);

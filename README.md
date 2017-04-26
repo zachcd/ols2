@@ -54,3 +54,12 @@ _______
 
 ## Discord Bot
 _______
+
+### Made with Discord.js
+- [https://github.com/hydrabolt/discord.js/](https://github.com/hydrabolt/discord.js/)
+
+#### Running
+ - Clone the repo
+ - `npm install` dependencies
+ - Configure MongoDB, bot api token
+ - Run `node discord/index.js`

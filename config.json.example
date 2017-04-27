@@ -1,5 +1,5 @@
 {
-  "bot-token": "<token here>",
-  "mongodb-dev-uri": "<mongodb://<dbuser>:<dbpass>@host:port/db>",
-	"mongodb-testing-uri": "<mongodb://<dbuser>:<dbpass>@host:port/db>"
+  "botToken": "<token here>",
+  "mongodbUri": "<mongodb://<dbuser>:<dbpass>@host:port/db>",
+	"mongodbUriTesting": "<mongodb://<dbuser>:<dbpass>@host:port/db>"
 }

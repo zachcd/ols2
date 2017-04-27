@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({
-  name: String,
+  ign: String,
 	elo: Number,
-	isOwner: Boolean,
-  team: String
+  user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Player', playerSchema);

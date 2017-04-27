@@ -21,15 +21,31 @@ bot.on('message', msg => {
     msg.channel.sendMessage('XD');
   }
 
-  //create a new user ex : '-createPlayer <ign> <elo> <isOwner>'
-	else if (msg.content.startsWith(prefix + 'createPlayer')) {
-		if (args.length != 3) msg.channel.sendMessage('Usage: -createPlayer <ign> <elo> <isOwner>');
+	//create a new user ex : '-createUser <isOwner> <isPlayer> <isAdmin> <username>'
+	else if (msg.content.startsWith(prefix + 'createUser')) {
+		if (args.length != 4) msg.channel.sendMessage('Usage: -createUser <isOwner> <isPlayer> <isAdmin> <username>');
 		else {
-			const ign = args[0];
-			const elo = parseInt(args[1]);
-			const isOwner = (args[2] == 'true');
+			const isOwner = (args[0] == 'true');
+			const isPlayer = (args[1] == 'true');
+			const isAdmin = (args[2] == 'true');
+			const username = args[3];
 
-			lib.createPlayer(ign, elo, isOwner, function(returnMsg) {
+			lib.createUser(isOwner, isPlayer, isAdmin, username, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
+
+		}
+	}
+
+  //create a new player ex : '-createPlayer <username> <ign> <elo> <isOwner>'
+	else if (msg.content.startsWith(prefix + 'createPlayer')) {
+		if (args.length != 3) msg.channel.sendMessage('Usage: -createPlayer <username> <ign> <elo>');
+		else {
+			const username = args[0];
+			const ign = args[1];
+			const elo = parseInt(args[2]);
+
+			lib.createPlayer(username, ign, elo, function(returnMsg) {
 				msg.channel.sendMessage(returnMsg);
 			});
 
@@ -58,6 +74,20 @@ bot.on('message', msg => {
 			const teamName = args[0];
 
 			lib.listPlayers(teamName, function(returnMsg) {
+				msg.channel.sendMessage(returnMsg);
+			});
+		}
+	}
+
+	//sets a user's team : '-setUserTeam <username> <teamname>>
+	else if (msg.content.startsWith(prefix + 'setUserTeam')) {
+		if (args.length != 2) msg.channel.sendMessage('Usage: -setUserTeam <username> <teamname>');
+
+		else {
+			const username = args[0];
+			const teamName = args[1];
+
+			lib.setUserTeam(username, teamName, function(returnMsg) {
 				msg.channel.sendMessage(returnMsg);
 			});
 		}

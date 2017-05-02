@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# db for when connor is a fucking idiot
+/db
+
 # dependencies
 /node_modules
 

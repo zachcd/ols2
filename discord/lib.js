@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const dbuser = process.argv[3];
-const dbpass = process.argv[4];
+const config = require('config.json')('config.json');
 
 //register models
 const Team = require('../models/Team');
@@ -8,9 +7,7 @@ const Player = require('../models/Player');
 const Contract = require('../models/Contract');
 const User = require('../models/User');
 
-//TODO change?
-mongoose.connect('mongodb://' + dbuser +':' + dbpass +
-'@ds147510.mlab.com:47510/olsdev');
+mongoose.connect(config.mongodbUri);
 
 exports.createUser = function(owner, player, admin, uname, cb) {
 

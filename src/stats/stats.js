@@ -5,7 +5,7 @@ class Stats extends Component {
   render() {
     return (
       <div>
-        I'm a stats
+        Im a stats
       </div>
     )
   }

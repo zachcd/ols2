@@ -5,7 +5,7 @@ class Team extends Component {
   render() {
     return (
       <div>
-        I'm a team
+        Im a team
       </div>
     )
   }

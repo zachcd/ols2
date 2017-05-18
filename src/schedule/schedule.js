@@ -5,7 +5,7 @@ class Schedule extends Component {
   render() {
     return (
       <div>
-        I'm a schedule
+        Im a schedule
       </div>
     )
   }

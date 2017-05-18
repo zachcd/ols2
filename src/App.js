@@ -6,9 +6,9 @@ import {
   Link
 } from 'react-router-dom'
 import './App.css';
-import { Team } from './team/Team';
-import { Schedule } from './schedule/schedule';
-import { Stats } from './stats/stats';
+import { Team } from './Team/Team';
+import { Schedule } from './Schedule/Schedule';
+import { Stats } from './Stats/Stats';
 import { Collection } from './collection/collection';
 
 
@@ -22,7 +22,7 @@ class App extends Component {
             <MainHeader>
             </MainHeader>
           </div>
-          <Route path="/" component={Collection}/>
+
           <Route path="/team" component={Team}/>
           <Route path="/schedule" component={Schedule}/>
           <Route path="/stats" component={Stats}/>

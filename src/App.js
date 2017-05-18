@@ -6,10 +6,10 @@ import {
   Link
 } from 'react-router-dom'
 import './App.css';
-import { Team } from 'team/team.js';
-import { Schedule } from 'schedule/schedule.js';
-import { Stats } from 'stats/stats.js';
-import { Collection } from 'collection/collection.js';
+import { Team } from 'team/team';
+import { Schedule } from 'schedule/schedule';
+import { Stats } from 'stats/stats';
+import { Collection } from 'collection/collection';
 
 
 class App extends Component {

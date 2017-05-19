@@ -1833,6 +1833,10 @@ dotenv@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-2.0.0.tgz#bd759c357aaa70365e01c96b7b0bec08a6e0d949"
 
+double-ended-queue@^2.1.0-0:
+  version "2.1.0-0"
+  resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -2280,10 +2284,6 @@ express@^4.13.3:
     type-is "~1.6.14"
     utils-merge "1.0.0"
     vary "~1.1.0"
-
-extend@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-1.3.0.tgz#d1516fb0ff5624d2ebf9123ea1dac5a1994004f8"
 
 extend@~3.0.0:
   version "3.0.1"
@@ -3514,6 +3514,12 @@ kareem@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-1.4.1.tgz#ed76200044fa041ef32b4da8261e2553f1173531"
 
+kcors@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/kcors/-/kcors-1.3.2.tgz#8843ff14d86bfc2cfb5c2664e6809176b38dbd0d"
+  dependencies:
+    copy-to "^2.0.1"
+
 keygrip@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/keygrip/-/keygrip-1.0.1.tgz#b02fa4816eef21a8c4b35ca9e52921ffc89a30e9"
@@ -3530,12 +3536,11 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-koa-body@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/koa-body/-/koa-body-1.6.0.tgz#2e44d7c9ee1b55e2a995c32145cb874e4dbe29ae"
+koa-body@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/koa-body/-/koa-body-2.0.1.tgz#87a171d5f8d74b354e7d68abf3ad510999b15ce3"
   dependencies:
     co-body "*"
-    extend "1.3.0"
     formidable "1.0.17"
 
 koa-bodyparser@^4.2.0:
@@ -5026,6 +5031,22 @@ redeyed@~1.0.0:
   resolved "https://registry.yarnpkg.com/redeyed/-/redeyed-1.0.1.tgz#e96c193b40c0816b00aec842698e61185e55498a"
   dependencies:
     esprima "~3.0.0"
+
+redis-commands@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/redis-commands/-/redis-commands-1.3.1.tgz#81d826f45fa9c8b2011f4cd7a0fe597d241d442b"
+
+redis-parser@^2.5.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
+
+redis@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/redis/-/redis-2.7.1.tgz#7d56f7875b98b20410b71539f1d878ed58ebf46a"
+  dependencies:
+    double-ended-queue "^2.1.0-0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.5.0"
 
 reduce-css-calc@^1.2.6:
   version "1.3.0"

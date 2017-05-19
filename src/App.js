@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import MainHeader from './navigation/mainHeader.js';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import './App.css';
-import { Team } from './Team/Team';
-import { Schedule } from './Schedule/Schedule';
-import { Stats } from './Stats/Stats';
-import { Collection } from './collection/collection';
+import Team from './Team/Team';
+import Schedule from './Schedule/Schedule';
+import Stats from './Stats/Stats';
+import Collection from './collection/collection';
 
 
 class App extends Component {

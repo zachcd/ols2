@@ -8,6 +8,7 @@ import teamRouter from './api/teamRoutes'
 import userRouter from './api/userRoutes'
 import playerRouter from './api/playerRoutes'
 import postRouter from './api/postRoutes'
+import gameRouter from './api/gameRoutes'
 
 const port = (process.env.PORT || 3200)
 const db = mongoose.connect('mongodb://localhost/ols2')
@@ -33,9 +34,10 @@ app.use(playerRouter.routes())
 app.use(playerRouter.allowedMethods())
 app.use(postRouter.routes())
 app.use(postRouter.allowedMethods())
-
+app.use(gameRouter.routes())
+app.use(gameRouter.allowedMethods())
 
 app.listen(port)
 console.log('The magic happens on port ' + port)
-
+console.log(`curl -i http://localhost:3200/api/games -d "name=test"`)
 export default app

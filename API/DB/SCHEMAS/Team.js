@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema
 
 const teamSchema = new Schema({
-  owner: { type: Schema.Types.ObjectId, ref: 'User'},
+  sponsor: { type: Schema.Types.ObjectId, ref: 'User'},
   players: [{ type: Schema.Types.ObjectId, ref: 'User'}],
   games: [{type: Schema.Types.ObjectId, ref: 'Game'}]
 })

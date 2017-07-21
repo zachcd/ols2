@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 const cardSchema = new Schema({
   summoner: String,
+  tournament: { type: Schema.Types.ObjectId, ref: 'Tournament'}
   games: [{ type: Schema.Types.ObjectId, ref: 'Game'}],
   team: { type: Schema.Types.ObjectId, ref: 'Team'},
   border: String,

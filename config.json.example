@@ -1,0 +1,5 @@
+{
+  "botToken": "<token here>",
+  "mongodbUri": "<mongodb://<dbuser>:<dbpass>@host:port/db>",
+	"mongodbUriTesting": "<mongodb://<dbuser>:<dbpass>@host:port/db>"
+}

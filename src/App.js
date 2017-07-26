@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom'
 
+
+//if Organization is opened
+
+//if Organization is unopened
+  //display organizations to select and a filter/search
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
+      <BrowserRouter>
+        <div className="App">
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </BrowserRouter>
     );
   }
 }
+
 
 export default App;

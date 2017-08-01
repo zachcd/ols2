@@ -4,9 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 import MainNav from './MainNav'
-import Login from './Host/Login'
-import Register from './Host/Register'
+import LinkedLogin from './Host/Login'
+import LinkedRegister from './Host/Register'
 import CardCollection from './CardCollection/CardCollection'
+import OrgProfile from './Host/Main.js'
 
 //if Organization is opened
 
@@ -23,7 +24,7 @@ class App extends Component {
           <MainNav openLogin={this.openLogin} openRegister={this.openRegister} openCards={this.openCards}/>
             {modal}
             <div className="App">
-              <Route path="/pitt" render={() => <OrgProfile org="pitt" openCards={this.openCards} close={this.close}}
+              <Route path="/pitt" render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close}} />
               <Route path="/" render={() => <Main openCards={this.openCards} close={this.close}/>}/>
             </div>
 
@@ -32,10 +33,10 @@ class App extends Component {
     );
   }
   openLogin() {
-    this.modal = <div className="modalWrapper"><Login /></div>
+    this.modal = <div className="modalWrapper"><LinkedLogin /></div>
   }
   openRegister() {
-    this.modal = <div className="modalWrapper"><Register /></div>
+    this.modal = <div className="modalWrapper"><LinkedRegister /></div>
   }
   openCards() {
     this.modal = <div className="modalWrapper"><CardCollection /></div>

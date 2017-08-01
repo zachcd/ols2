@@ -23,5 +23,8 @@ export function ReceiveLogin (user) {
 }
 
 export function FailLogin (failInfo) {
-  
+  return {
+    type: FAIL_LOGIN,
+    payload: failInfo
+  }
 }

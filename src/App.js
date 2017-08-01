@@ -21,8 +21,13 @@ class App extends Component {
     return (
       <Provider store={this.store}>
         <BrowserRouter>
-          <MainNav openLogin={this.openLogin} openRegister={this.openRegister} openCards={this.openCards}/>
+          <MainNav
+            openLogin={this.openLogin}
+            openRegister={this.openRegister}
+            openCards={this.openCards}/>
+
             {modal}
+            
             <div className="App">
               <Route path="/pitt" render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close}} />
               <Route path="/" render={() => <Main openCards={this.openCards} close={this.close}/>}/>

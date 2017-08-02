@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 
 // if nothing in Organization is opened
@@ -6,14 +7,17 @@ import React, { Component } from 'react';
 // if something in Organization is opened
   //move nav to top
 
-class Organization extends Component {
+  class OrgProfile extends Component {
+    render() {
+      return (
+        <div className="Organization" id="{this.props.org}">
+          <Link>Teams</Link>
+          <Link>Upcoming</Link>
 
-  render() {
-    renderTournamentsList(this.props.)
-    return (
-      <div className="Organization" id="{this.state.organization}">
-
-      </div>
-    )
+        </div>
+      )
+    }
   }
-}
+
+
+export default OrgProfile

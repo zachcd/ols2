@@ -1,53 +1,76 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
+import {
+  BrowserRouter,
+  Route
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 import MainNav from './MainNav'
 import LinkedLogin from './Host/Login'
 import LinkedRegister from './Host/Register'
 import CardCollection from './CardCollection/CardCollection'
-import OrgProfile from './Host/Main.js'
+import OrgProfile from './Host/Organization/Profile'
+import Main from './Host/Main'
+import olsApp from './REDUX/reducers'
 
 //if Organization is opened
 
 //if Organization is unopened
   //display organizations to select and a filter/search
 
+let store = createStore(olsApp, /* preloadedState, */
+ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+
 class App extends Component {
-  let modal = null
-  let store = createStore()
+
+  constructor(props) {
+  super(props);
+  this.state = {
+      modal: null
+    };
+    this.openLogin = this.openLogin.bind(this)
+    this.openRegister = this.openRegister.bind(this)
+    this.openCards = this.openCards.bind(this)
+    this.close = this.close.bind(this)
+  }
+
   render() {
     return (
-      <Provider store={this.store}>
+      <Provider store={store}>
         <BrowserRouter>
+        <div  className="App">
           <MainNav
             openLogin={this.openLogin}
             openRegister={this.openRegister}
             openCards={this.openCards}/>
 
-            {modal}
-            
-            <div className="App">
-              <Route path="/pitt" render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close}} />
+            {this.state.modal}
+
+            <div>
+              <Route path="/pitt"
+              render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close} />} />
               <Route path="/" render={() => <Main openCards={this.openCards} close={this.close}/>}/>
             </div>
-
+            </div>
         </BrowserRouter>
       </Provider>
     );
   }
   openLogin() {
-    this.modal = <div className="modalWrapper"><LinkedLogin /></div>
+    console.log("opening Login")
+    this.setState({modal: <div className="modalWrapper"><LinkedLogin /></div>})
   }
   openRegister() {
-    this.modal = <div className="modalWrapper"><LinkedRegister /></div>
+    console.log("opening Register")
+    this.setState({modal: <div className="modalWrapper"><LinkedRegister /></div>})
   }
   openCards() {
-    this.modal = <div className="modalWrapper"><CardCollection /></div>
+    this.setState({modal: <div className="modalWrapper"><CardCollection /></div>})
   }
   close() {
-    modal = null
+    this.setState({modal: null})
   }
 }
 

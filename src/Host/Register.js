@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import {Register} from './../REDUX/actions/UserAccountActions'
-import connect from 'react-redux'
+import React from 'react';
+
+import {connect} from 'react-redux'
 
 
-const Register = ({ dispatch }) => {
+const Register = (props) => {
 
     let username
     let password
     let confirmPass
+    let email
 
 
   return (
     <div className="modal">
       <form onSubmit={e => {
         e.preventDefault()
-        if(this.password == this.confirmPass) {
-          let user = {username: this.username, password: this.password, email: this.email}
-          dispatch(Register(user))
+        if(password === confirmPass) {
+          let user = {username: username, password: password, email: email}
+          props.register(user)
         }
 
       }}>
@@ -29,6 +30,9 @@ const Register = ({ dispatch }) => {
         <input type="text" ref={ node => {
           confirmPass = node
         }}></input>
+        <input type="text" ref={ node => {
+          email = node
+        }}></input>
         <button type="submit">
             Register Account
           </button>
@@ -37,9 +41,16 @@ const Register = ({ dispatch }) => {
   )
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    register: user => {
+      dispatch(user)
+    }
+  }
+}
+
 
 const LinkedRegister = connect(
-  mapStateToProps,
   mapDispatchToProps
 )(Register)
 

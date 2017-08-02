@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
-import * as reducers from './reducers'
+import user from './reducers/user'
 
-const olsApp = combineReducers(reducers)
+const olsApp = combineReducers({user})
+
+export default olsApp

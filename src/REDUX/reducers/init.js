@@ -5,7 +5,7 @@ const initialState = {
   tournament: null
 }
 
-export function initialStateReducer(state, action) {
+export default function initialState(state, action) {
   if (typeof state === 'undefined') {
     return initialState
   }

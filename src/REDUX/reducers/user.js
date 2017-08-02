@@ -1,6 +1,6 @@
-import LOGIN, REGISTER,LINK_ACCOUNT
+import {LOGIN, LOGOUT, REGISTER, LINK_ACCOUNT} from '../actions/UserAccountActions'
 
-export function UserAccountActions(state, action) {
+function user(state, action) {
   switch(action.type) {
     case REGISTER:
       return Object.assign({}, state, {
@@ -19,7 +19,7 @@ export function UserAccountActions(state, action) {
         user: LogOut(state.user, action.payload)
       })
     default:
-      return state
+      return null
   }
 }
 
@@ -41,8 +41,10 @@ function Login(user, payload) {
       })
 }
 function LinkAccount(user, payload) {
-
+  return user
 }
 function LogOut(user, payload) {
-
+  return null
 }
+
+export default user

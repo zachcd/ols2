@@ -1,30 +1,32 @@
 import {LOGIN, LOGOUT, REGISTER, LINK_ACCOUNT} from '../actions/UserAccountActions'
 
-function user(state, action) {
+function user(state = false, action) {
+  console.log(state)
   switch(action.type) {
     case REGISTER:
       return Object.assign({}, state, {
-        user: Register(state.user, action.payload)
+        user: Register(state.user || {}, action.payload)
       })
     case LOGIN:
       return Object.assign({}, state, {
-        user: Login(state.user, action.payload)
+        user: Login(state.user || {}, action.payload)
       })
     case LINK_ACCOUNT:
       return Object.assign({}, state, {
-        user: LinkAccount(state.user, action.payload)
+        user: LinkAccount(state.user || {}, action.payload)
       })
     case LOGOUT:
       return Object.assign({}, state, {
-        user: LogOut(state.user, action.payload)
+        user: LogOut(state.user || {}, action.payload)
       })
     default:
-      return null
+      return state
   }
 }
 
 
 function Register(user, payload) {
+  console.log("fired")
   return Object.assign({},  user,  {
           username: payload.username,
           password: payload.password,

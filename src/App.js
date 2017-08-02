@@ -22,7 +22,7 @@ import olsApp from './REDUX/reducers'
 let store = createStore(olsApp, /* preloadedState, */
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-
+console.log(store)
 class App extends Component {
 
   constructor(props) {

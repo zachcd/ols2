@@ -38,7 +38,7 @@ const Nav = (props) => {
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state.user,
+    loggedIn: state.user.status,
     currentOrg: state.organization
   }
 }

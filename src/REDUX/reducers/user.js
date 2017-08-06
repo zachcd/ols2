@@ -1,7 +1,8 @@
 import {LOGIN, LOGOUT, REGISTER, LINK_ACCOUNT} from '../actions/UserAccountActions'
+import * as apiActions from '../actions/APIactions/APIUserActions'
+import api from './api/apiAccountFunctions'
 
 function user(state = false, action) {
-  console.log(state)
   switch(action.type) {
     case REGISTER:
       return Object.assign({}, state, {
@@ -19,6 +20,32 @@ function user(state = false, action) {
       return Object.assign({}, state, {
         user: LogOut(state.user || {}, action.payload)
       })
+    case apiActions.SEND_LOGIN:
+      api.sendLogin(state, action) //this is the primary call that passes information
+      return Object.assign({}, state, {
+        user: setStatus(state.user || {}, "AwaitingServer")
+      })
+    case apiActions.RECEIVE_LOGIN:
+      return Object.assign({}, state, {
+        user: api.Login(state.user || {}, action.payload)
+      })
+    case apiActions.FAIL_LOGIN:
+      return Object.assign({}, state, {
+        user: setStatus(state.user || {}, "LoginFailed")
+      })
+    case apiActions.SEND_REGISTER:
+      api.sendRegister(state, action) //this is the primary call that passes information
+      return Object.assign({}, state, {
+        user: setStatus(state.user || {}, "AwaitingServer")
+      })
+    case apiActions.RECEIVE_REGISTER:
+      return Object.assign({}, state, {
+        user: api.Register(state.user || {}, action.payload)
+      })
+    case apiActions.FAIL_REGISTER:
+      return Object.assign({}, state, {
+        user: setStatus(state.user || {}, "RegisterFailed")
+      })
     default:
       return state
   }
@@ -26,7 +53,6 @@ function user(state = false, action) {
 
 
 function Register(user, payload) {
-  console.log("fired")
   return Object.assign({},  user,  {
           username: payload.username,
           password: payload.password,
@@ -47,6 +73,12 @@ function LinkAccount(user, payload) {
 }
 function LogOut(user, payload) {
   return null
+}
+
+function setStatus(user, payload) {
+  return Object.assign({},  user,  {
+          status: payload
+      })
 }
 
 export default user

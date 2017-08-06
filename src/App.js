@@ -13,6 +13,7 @@ import CardCollection from './CardCollection/CardCollection'
 import OrgProfile from './Host/Organization/Profile'
 import Main from './Host/Main'
 import olsApp from './REDUX/reducers'
+// import { sessionService } from 'redux-react-session';
 
 //if Organization is opened
 
@@ -21,6 +22,8 @@ import olsApp from './REDUX/reducers'
 
 let store = createStore(olsApp, /* preloadedState, */
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+// sessionService.initSessionService(store);
 
 console.log(store)
 class App extends Component {

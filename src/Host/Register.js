@@ -1,46 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 import {Register as RegisterAction } from '../REDUX/actions/UserAccountActions'
 
+class Register extends Component  {
 
-const Register = (props) => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      confirmPass: "",
+      email: ""
+    };
+  }
 
-    let username
-    let password
-    let confirmPass
-    let email
 
+  render() {
+    return (
+      <div className="modal">
+        <form onSubmit={e => {
+          e.preventDefault()
+          if(this.state.password === this.state.confirmPass) {
+            let user = {username: this.state.username, password: this.state.password, email: this.state.email}
+            this.props.register(user)
+          }
 
-  return (
-    <div className="modal">
-      <form onSubmit={e => {
-        e.preventDefault()
-        if(password === confirmPass) {
-          console.log("password match")
-          let user = {username: username, password: password, email: email}
-          props.register(user)
-        }
-
-      }}>
-        Username<input type="text" ref={ node => {
-          username = node.value
-        }}></input> <br/>
-        Password<input type="text" ref={ node => {
-          password = node.value
-        }}></input><br/>
-        Confirm Password<input type="text" ref={ node => {
-          confirmPass = node.value
-        }}></input><br/>
-        Email<input type="text" ref={ node => {
-          email = node.value
-        }}></input>
-        <button type="submit">
-            Register Account
-          </button>
-      </form>
-    </div>
-  )
+        }}>
+          Username<input type="text" onChange={ event => {
+            this.setState({username: event.target.value})
+          }}></input> <br/>
+          Password<input type="password" onChange={ event => {
+            this.setState({password: event.target.value})
+          }}></input><br/>
+          Confirm Password<input type="password" onChange={ event => {
+            this.setState({confirmPass: event.target.value})
+          }}></input><br/>
+          <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/>
+          Email<input type="text" onChange={ event => {
+            this.setState({email: event.target.value})
+          }}></input>
+          <button type="submit">
+              Register Account
+            </button>
+        </form>
+      </div>
+    )
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -48,6 +54,13 @@ const mapDispatchToProps = dispatch => {
     register: user => {
       dispatch(RegisterAction(user))
     }
+  }
+}
+const PassCheck = (props) => {
+  if (props.pass !== props.confirm) {
+    return <div>Passwords must match</div>
+  } else {
+    return null
   }
 }
 

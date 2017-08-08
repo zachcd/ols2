@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 import {Register as RegisterAction } from '../REDUX/actions/UserAccountActions'
+import { Button, Input } from 'semantic-ui-react'
+import './Register.css'
 
 class Register extends Component  {
 
@@ -27,22 +29,22 @@ class Register extends Component  {
           }
 
         }}>
-          Username<input type="text" onChange={ event => {
+          <Input type="text" onChange={ event => {
             this.setState({username: event.target.value})
-          }}></input> <br/>
-          Password<input type="password" onChange={ event => {
+          }} icon='user' iconPosition='left' placeholder='Username'></Input> <br/>
+          <Input type="password" onChange={ event => {
             this.setState({password: event.target.value})
-          }}></input><br/>
-          Confirm Password<input type="password" onChange={ event => {
+          }} icon='lock' iconPosition='left' placeholder='Password'></Input><br/>
+          <Input type="password" onChange={ event => {
             this.setState({confirmPass: event.target.value})
-          }}></input><br/>
-          <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/>
-          Email<input type="text" onChange={ event => {
+          }} icon='lock' iconPosition='left' placeholder='Confirm Password'></Input><br/>
+          <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/><br />
+          <Input type="text" onChange={ event => {
             this.setState({email: event.target.value})
-          }}></input> <br />
-          <button type="submit">
+          }}icon='inbox' iconPosition='left' placeholder='Email'></Input> <br />
+          <Button type="submit">
               Register Account
-            </button>
+            </Button>
           <StatusCheck status={this.props.userStatus} />
         </form>
       </div>

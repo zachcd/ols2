@@ -63,14 +63,15 @@ class App extends Component {
   }
   openLogin() {
     console.log("opening Login")
-    this.setState({modal: <div className="modalWrapper"><LinkedLogin /></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => { if (e.target === e.currentTarget) { this.close()}}}><div className="modalWrapper"><LinkedLogin /></div></div>})
+
   }
   openRegister() {
     console.log("opening Register")
-    this.setState({modal: <div className="modalWrapper"><LinkedRegister /></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => {if (e.target === e.currentTarget){ this.close()}}}><div className="modalWrapper"><LinkedRegister /></div></div>})
   }
   openCards() {
-    this.setState({modal: <div className="modalWrapper"><CardCollection /></div>})
+    this.setState({modal: <CardCollection />})
   }
   close() {
     this.setState({modal: null})

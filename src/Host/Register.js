@@ -39,10 +39,11 @@ class Register extends Component  {
           <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/>
           Email<input type="text" onChange={ event => {
             this.setState({email: event.target.value})
-          }}></input>
+          }}></input> <br />
           <button type="submit">
               Register Account
             </button>
+          <StatusCheck status={this.props.userStatus} />
         </form>
       </div>
     )
@@ -56,9 +57,38 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
+
+const getStatus = (user) => {
+  if (user) {
+    if (user.status) {
+      return user.status
+    } else {
+      return null
+    }
+  } else {
+    return null
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    userStatus: getStatus(state.user)
+  }
+}
 const PassCheck = (props) => {
   if (props.pass !== props.confirm) {
-    return <div>Passwords must match</div>
+    return <div style={{color: 'red'}}>Passwords must match</div>
+  } else {
+    return null
+  }
+}
+const StatusCheck = (props) => {
+  if (props.status === "AwaitingServer") {
+    return <div> Awaiting a response from the server on your Registration</div>
+  } else if (props.status === "RegisterFailed") {
+    return <div> That username is reserved </div>
+  } else if (props.status === "LoginFailed") {
+    return <div> Yeah, you cant just use your League login </div>
   } else {
     return null
   }
@@ -66,7 +96,7 @@ const PassCheck = (props) => {
 
 
 const LinkedRegister = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Register)
 

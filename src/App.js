@@ -47,7 +47,8 @@ class App extends Component {
           <MainNav
             openLogin={this.openLogin}
             openRegister={this.openRegister}
-            openCards={this.openCards}/>
+            openCards={this.openCards}
+            center={true}/>
 
             {this.state.modal}
 

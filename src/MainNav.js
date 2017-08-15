@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { LogOut } from './REDUX/actions/UserAccountActions'
-
+import './MainNav.css'
 
 
 const Nav = (props) => {
@@ -14,20 +14,20 @@ const Nav = (props) => {
   }
   if(props.loggedIn) {
     return (
-      <div>
-        <Link to="/">Organizations</Link>
+      <div className="nav">
+        <Link to="/" id="nav1">Organizations</Link>
         {orgLink}
-        <div onClick={() => props.openCards()}>Cards</div>
-        <div onClick={() => props.logout()}>Logout</div>
+        <div onClick={() => props.openCards()} id="nav2">Cards</div>
+        <div onClick={() => props.logout()}id="nav3">Settings</div>
       </div>
     )
   } else {
     return(
-      <div>
-      <Link to="/">Organizations</Link>
+      <div className="nav">
+      <Link to="/" id="nav1">Organizations</Link>
       {orgLink}
-      <div onClick={() => props.openLogin()}>Login</div>
-      <div onClick={() => props.openRegister()}>Register</div>
+      <div onClick={() => props.openLogin()} id="nav2">Login</div>
+      <div onClick={() => props.openRegister()} id="nav3">Register</div>
       </div>
     )
   }

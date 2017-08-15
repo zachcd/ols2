@@ -41,8 +41,10 @@
     "passport-local": "^1.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-motion": "^0.5.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
+    "react-transition-group": "^2.2.0",
     "redis": "^2.7.1",
     "redux": "^3.6.0",
     "semantic-ui-css": "^2.2.12",
@@ -55,6 +57,7 @@
     "server": "node server/babel.server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-styles": "gulp build semantic"
   }
 }

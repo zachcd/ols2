@@ -24,7 +24,7 @@ router
       if (err) console.log("error")
     })
 
-    ctx.res.body = 'Success'
+    ctx.body = 'Success'
   })
 
 

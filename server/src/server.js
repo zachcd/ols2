@@ -13,21 +13,12 @@ import loginRouter from './api/loginRoutes'
 import registrationRouter from './api/registrationRoutes.js'
 
 const port = (process.env.PORT || 3200)
-// const option = {
-//     server: {
-//         socketOptions: {
-//             keepAlive: 300000,
-//             connectTimeoutMS: 30000
-//         }
-//     },
-//     replset: {
-//         socketOptions: {
-//             keepAlive: 300000,
-//             connectTimeoutMS: 30000
-//         }
-//     }
-// };
-const db = mongoose.connect('mongodb://localhost/ols2')
+const option = {
+  useMongoClient: true
+}
+mongoose.Promise = global.Promise
+
+const db = mongoose.connect('mongodb://localhost/ols2', option)
 
 const app = new koa()
   .use(body())

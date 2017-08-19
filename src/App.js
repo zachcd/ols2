@@ -12,17 +12,26 @@ import LinkedRegister from './Host/Register'
 import CardCollection from './CardCollection/CardCollection'
 import OrgProfile from './Host/Organization/Profile'
 import Main from './Host/Main'
-import olsApp from './REDUX/reducers'
+import olsApp, {olsEpics} from './REDUX/reducers'
+import { createEpicMiddleware } from 'redux-observable';
+import { compose } from 'redux';
+
 // import { sessionService } from 'redux-react-session';
 
 //if Organization is opened
 
 //if Organization is unopened
   //display organizations to select and a filter/search
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-let store = createStore(olsApp, /* preloadedState, */
- window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
+const epicMiddleware = createEpicMiddleware(rootEpic);
+
+const store = createStore(olsApp,
+  composeEnhancers(
+    applyMiddleware(epicMiddleware)
+  )
+);
 // sessionService.initSessionService(store);
 
 console.log(store)

@@ -11,6 +11,7 @@ import postRouter from './api/postRoutes'
 import gameRouter from './api/gameRoutes'
 import loginRouter from './api/loginRoutes'
 import registrationRouter from './api/registrationRoutes.js'
+import cors from 'koa-cors'
 
 const port = (process.env.PORT || 3200)
 const option = {
@@ -23,6 +24,7 @@ const db = mongoose.connect('mongodb://localhost/ols2', option)
 const app = new koa()
   .use(body())
   .use(logger())
+  .use(cors())
 
 const router = new api()
 router

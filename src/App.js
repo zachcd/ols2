@@ -14,7 +14,7 @@ import OrgProfile from './Host/Organization/Profile'
 import Main from './Host/Main'
 import olsApp, {olsEpics} from './REDUX/reducers'
 import { createEpicMiddleware } from 'redux-observable';
-import { compose } from 'redux';
+import { compose, applyMiddleware } from 'redux';
 
 // import { sessionService } from 'redux-react-session';
 
@@ -25,7 +25,7 @@ import { compose } from 'redux';
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(olsEpics);
 
 const store = createStore(olsApp,
   composeEnhancers(

@@ -24,7 +24,7 @@ router
 
       let promise = await user.save();
       ctx.status = 201
-      return {
+      ctx.body = {
         message: 'Success',
         username: body.username
       }
@@ -34,11 +34,11 @@ router
       console.log('error:', err)
       if(err.message.includes("duplicate key")) {
         console.log('duplicate')
-        return {
+        ctx.body =  {
           error: 'duplicate'
         }
       }
-      return {
+      ctx.body =  {
         error: 'general'
       }
     }

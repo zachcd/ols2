@@ -10,21 +10,39 @@ router
   })
 
   .post('/', async(ctx, next) => {
-    console.log("POST : /api/register/")
-    const body = ctx.request.body
-    console.log("USERNAME: " + body.username)
+    try {
 
-    const user = new User({
-      username: body.username,
-      password: body.password,
-      email: body.email
-    })
+      console.log("POST : /api/register/")
+      const body = ctx.request.body
+      console.log("USERNAME: " + body.username)
 
-    user.save(function (err) {
-      if (err) console.log("error")
-    })
+      const user = new User({
+        username: body.username,
+        password: body.password,
+        email: body.email
+      })
 
-    ctx.body = 'Success'
+      let promise = await user.save();
+      ctx.status = 201
+      return {
+        message: 'Success',
+        username: body.username
+      }
+
+    } catch (err) {
+      ctx.status = 409
+      console.log('error:', err)
+      if(err.message.includes("duplicate key")) {
+        console.log('duplicate')
+        return {
+          error: 'duplicate'
+        }
+      }
+      return {
+        error: 'general'
+      }
+    }
+
   })
 
 

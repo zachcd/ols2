@@ -1,15 +1,6 @@
-export const SEND_ORGLOAD = "SEND_ORGLOAD"
-
 export const RECEIVE_ORGLOAD = "RECEIVE_ORGLAD"
 export const FAIL_ORGLOAD = "FAIL_ORGLOAD"
 
-
-export function Send_Orgload () {
-  return {
-    type: SEND_ORGLOAD,
-    payload: {}
-  }
-}
 
 export function Receive_Orgload (organizations) {
   return {
@@ -21,6 +12,26 @@ export function Receive_Orgload (organizations) {
 export function Fail_Orgload (failure) {
   return {
     type: FAIL_ORGLOAD,
+    payload: failure
+  }
+}
+
+export const RECEIVE_TOURNAMENTLOAD = "RECEIVE_TOURNAMENTLOAD"
+export const FAIL_TOURNAMENTLOAD = "FAIL_TOURNAMENTLOAD"
+
+export function Receive_TournamentLoad (organization, tournament) {
+  return {
+    type: RECEIVE_TOURNAMENTLOAD,
+    payload: {
+      organization: organization,
+      tournament: tournament
+    }
+  }
+}
+
+export function Fail_TournamentLoad (failure) {
+  return {
+    type: FAIL_TOURNAMENTLOAD,
     payload: failure
   }
 }

@@ -20,11 +20,6 @@ function user(state = false, action) {
       return Object.assign({}, state, {
         user: LogOut(state.user || {}, action.payload)
       })
-    case apiActions.SEND_LOGIN:
-      api.sendLogin(state, action) //this is the primary call that passes information
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "AwaitingServer")
-      })
     case apiActions.RECEIVE_LOGIN:
       return Object.assign({}, state, {
         user: api.Login(state.user || {}, action.payload)
@@ -32,11 +27,6 @@ function user(state = false, action) {
     case apiActions.FAIL_LOGIN:
       return Object.assign({}, state, {
         user: setStatus(state.user || {}, "LoginFailed")
-      })
-    case apiActions.SEND_REGISTER:
-      api.sendRegister(state, action) //this is the primary call that passes information
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "AwaitingServer")
       })
     case apiActions.RECEIVE_REGISTER:
       return Object.assign({}, state, {

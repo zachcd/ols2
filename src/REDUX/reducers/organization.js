@@ -12,5 +12,9 @@ funciton organizations(state={}, action) {
       return Object.assign({}, state, {
         organizations: AddAdmin(state.organizations || {}, action.payload)
       })
+    case REMOVE_ADMIN:
+      return Object.assign({}, state, {
+        organizations: RemoveAdmin(state.organization || {}, action.payload)
+      })
   }
 }

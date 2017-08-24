@@ -1,16 +1,6 @@
-export const SEND_LOGIN = 'SEND_LOGIN'
-
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const FAIL_LOGIN = 'FAIL_LOGIN'
 
-
-
-export function SendLogin (user) {
-  return {
-    type: SEND_LOGIN,
-    payload: user
-  }
-}
 
 export function ReceiveLogin (user) {
   return {
@@ -26,17 +16,9 @@ export function FailLogin (failInfo) {
   }
 }
 
-export const SEND_REGISTER ='SEND_REGISTER'
-
 export const RECEIVE_REGISTER = 'RECEIVE_REGISTER'
 export const FAIL_REGISTER = 'FAIL_REGISTER'
 
-export function SendRegister (user) {
-  return {
-    type: SEND_REGISTER,
-    payload: user
-  }
-}
 
 export function ReceiveRegister (user) {
   return {

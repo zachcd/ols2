@@ -30,3 +30,5 @@ const loadTournamentsEpic = action$ =>
       }
     })
   })
+
+  export loadTournamentsEpic

@@ -19,12 +19,12 @@ export function Fail_Orgload (failure) {
 export const RECEIVE_TOURNAMENTLOAD = "RECEIVE_TOURNAMENTLOAD"
 export const FAIL_TOURNAMENTLOAD = "FAIL_TOURNAMENTLOAD"
 
-export function Receive_TournamentLoad (organization, tournament) {
+export function Receive_TournamentLoad (organization, tournaments) {
   return {
     type: RECEIVE_TOURNAMENTLOAD,
     payload: {
       organization: organization,
-      tournament: tournament
+      tournaments: tournaments
     }
   }
 }

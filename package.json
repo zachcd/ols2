@@ -48,12 +48,8 @@
     "react-transition-group": "^2.2.0",
     "redis": "^2.7.1",
     "redux": "^3.6.0",
-<<<<<<< HEAD
-    "redux-observable": "^0.15.0",
-=======
     "redux-observable": "^0.16.0",
     "rxjs": "^5.4.3",
->>>>>>> kurt/register
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.71.3",
     "socket.io": "^1.7.3"

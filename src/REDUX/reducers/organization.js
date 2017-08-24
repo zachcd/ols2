@@ -20,13 +20,15 @@ funciton organizations(state={}, action) {
       return Object.assign({}, state, SetLoadingStatus(state, action.payload.organization)
     )
     case apiActions.RECEIVE_ORGLOAD:
-      return Object.assign({}, state, api.Organizations(state, action.payload))
+      return Object.assign({}, state, api.Organizations(state, action.payload)
+    )
     case apiActions.FAIL_ORGLOAD:
-
+      return Object.assign({}, state, {status: action.payload})
     case apiActions.RECEIVE_TOURNAMENTLOAD:
-
+      return Object.assign({}, state, api.Tournament(state, action.payload)
+    )
     case apiActions.FAIL_TOURNAMENTLOAD:
-
+      return Object.assign({}, state, {status: action.payload})
   }
 }
 

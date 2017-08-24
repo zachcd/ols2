@@ -1,5 +1,3 @@
-import { ajax } from 'rxjs/observable/dom/ajax';
-
 export function sendLogin(state, action) {
   console.log("sending Login")
 }

@@ -53,6 +53,7 @@ function user(state = false, action) {
 
 
 function Register(user, payload) {
+  console.log(payload)
   return Object.assign({},  user,  {
           username: payload.username,
           password: payload.password,

@@ -1,25 +1,6 @@
-export const SEND_LOGIN = 'SEND_LOGIN'
-
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
 export const FAIL_LOGIN = 'FAIL_LOGIN'
 
-export const SEND_REGISTER ='SEND_REGISTER'
-
-export const RECEIVE_REGISTER = 'RECEIVE_REGISTER'
-export const FAIL_REGISTER = 'FAIL_REGISTER'
-
-export const SEND_LINK = 'SEND_LINK'
-
-export const RECEIVE_LINK = 'RECEIVE_LINK'
-export const FAIL_LINK = 'FAIL_LINK'
-
-
-export function SendLogin (user) {
-  return {
-    type: SEND_LOGIN,
-    payload: user
-  }
-}
 
 export function ReceiveLogin (user) {
   return {
@@ -35,12 +16,9 @@ export function FailLogin (failInfo) {
   }
 }
 
-export function SendRegister (user) {
-  return {
-    type: SEND_REGISTER,
-    payload: user
-  }
-}
+export const RECEIVE_REGISTER = 'RECEIVE_REGISTER'
+export const FAIL_REGISTER = 'FAIL_REGISTER'
+
 
 export function ReceiveRegister (user) {
   return {
@@ -55,6 +33,14 @@ export function FailRegister (failInfo) {
     payload: failInfo
   }
 }
+
+
+
+export const SEND_LINK = 'SEND_LINK'
+
+export const RECEIVE_LINK = 'RECEIVE_LINK'
+export const FAIL_LINK = 'FAIL_LINK'
+
 
 export function SendLink (user, accountInfo, runePage) {
   return {

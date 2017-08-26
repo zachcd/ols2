@@ -38,8 +38,8 @@ console.log(store)
 class App extends Component {
 
   constructor(props) {
-  super(props);
-  this.state = {
+    super(props);
+    this.state = {
       modal: null
     };
     this.openLogin = this.openLogin.bind(this)
@@ -63,8 +63,8 @@ class App extends Component {
 
             <div>
               <Route path="/pitt"
-              render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close} />} />
-              <Route path="/" render={() => <Main openCards={this.openCards} close={this.close}/>}/>
+              render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards}/>} />
+              <Route path="/" render={() => <Main openCards={this.openCards}/>}/>
             </div>
             </div>
         </BrowserRouter>

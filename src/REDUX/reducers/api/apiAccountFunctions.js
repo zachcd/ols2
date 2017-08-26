@@ -1,13 +1,3 @@
-import { ajax } from 'rxjs/observable/dom/ajax';
-
-export function sendLogin(state, action) {
-  console.log("sending Login")
-}
-
-export function sendRegister(state, action){
-  console.log("sending register")
-}
-
 export function Login(user, payload) {
   return Object.assign({},  user,  {
           username: payload.username,

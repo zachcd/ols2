@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-
+import {connect} from 'react-redux'
+import { loadOrganizations} from '../REDUX/actions/'
 // if nothing in Organization is opened
   //display Upcoming and Teams as central medium options
 // if something in Organization is opened
@@ -8,7 +9,7 @@ import React, { Component } from 'react';
 
 class Main extends Component {
   render (){
-    return(<div>Main Works</div>)
+    return(<div></div>)
   }
 }
 

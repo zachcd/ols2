@@ -9,13 +9,22 @@ import userRouter from './api/userRoutes'
 import playerRouter from './api/playerRoutes'
 import postRouter from './api/postRoutes'
 import gameRouter from './api/gameRoutes'
+import loginRouter from './api/loginRoutes'
+import registrationRouter from './api/registrationRoutes.js'
+import cors from 'koa-cors'
 
 const port = (process.env.PORT || 3200)
-const db = mongoose.connect('mongodb://localhost/ols2')
+const option = {
+  useMongoClient: true
+}
+mongoose.Promise = global.Promise
+
+const db = mongoose.connect('mongodb://localhost/ols2', option)
 
 const app = new koa()
   .use(body())
   .use(logger())
+  .use(cors())
 
 const router = new api()
 router
@@ -36,8 +45,11 @@ app.use(postRouter.routes())
 app.use(postRouter.allowedMethods())
 app.use(gameRouter.routes())
 app.use(gameRouter.allowedMethods())
+app.use(loginRouter.routes())
+app.use(loginRouter.allowedMethods())
+app.use(registrationRouter.routes())
+app.use(registrationRouter.allowedMethods())
 
 app.listen(port)
 console.log('The magic happens on port ' + port)
-console.log(`curl -i http://localhost:3200/api/games -d "name=test"`)
 export default app

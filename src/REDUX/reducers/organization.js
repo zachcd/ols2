@@ -29,6 +29,7 @@ function organizations(state={}, action) {
     )
     case apiActions.FAIL_TOURNAMENTLOAD:
       return Object.assign({}, state, {status: action.payload})
+
   }
 }
 

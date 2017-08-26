@@ -11,7 +11,7 @@ import LinkedLogin from './Host/Login'
 import LinkedRegister from './Host/Register'
 import CardCollection from './CardCollection/CardCollection'
 import OrgProfile from './Host/Organization/Profile'
-import Main from './Host/Main'
+import LinkedMain from './Host/Main'
 import olsApp, {olsEpics} from './REDUX/reducers'
 import { createEpicMiddleware } from 'redux-observable';
 import { compose, applyMiddleware } from 'redux';
@@ -64,7 +64,7 @@ class App extends Component {
             <div>
               <Route path="/pitt"
               render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards}/>} />
-              <Route path="/" render={() => <Main openCards={this.openCards}/>}/>
+              <Route path="/" render={() => <LinkedMain openCards={this.openCards}/>}/>
             </div>
             </div>
         </BrowserRouter>

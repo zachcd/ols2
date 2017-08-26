@@ -16,18 +16,16 @@ _______
 * SPAs are single page applications.  They serve a single webpage to the user that uses Javascript to get site data from an API.
 This lets you update information live and the user's site experience requires no loading of new pages.
 
-* View frameworks have many different kinds, React is a very popular and hyped up one managed by Facebook.
+* View frameworks are varied, React is a very popular and hyped up open source one managed by Facebook.
 
 
-#### Redux is the data management store thingy
+#### Redux is the client side data management system
 
-* Redux is the thing in between React and the data.  It does actions on the data and moves it around and makes it available to React and passes it to the server.
-You can think of it as a data service that is available across the entire site and maintains the same data store across different pages
-
+* Redux is the datastore.  It does actions on the data and moves it around and makes it available to React and passes it to the server.
 
 #### Socket.io is the WebSocket library
 
-* WebSocket's allow close to real time transmission of data.  It'll be how we do chat and comments on the site.
+* WebSocket's allow back and forth transmission of data between client and server and vice versa.  Its best for small transfers.
 
 
 ## KOA RESTful API

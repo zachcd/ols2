@@ -2,7 +2,7 @@ import { CREATE_ORGANIZATION, ADD_ADMIN, REMOVE_ADMIN, LOAD_ORGANIZATIONS, LOAD_
 import * as apiActions from '../actions/APIactions/APIOrganizationActions'
 import api from './api/apiOrganizationDataFunctions'
 
-funciton organizations(state={}, action) {
+function organizations(state={}, action) {
   switch(action.type) {
     case CREATE_ORGANIZATION:
       return Object.assign({}, state, CreateOrg(state || {}, action.payload)
@@ -33,7 +33,7 @@ funciton organizations(state={}, action) {
 }
 
 function CreateOrg(organizations, payload) {
-  return Object.assign({}, organizations, {[payload.name]: {description: payload.description}})
+  return Object.assign({}, organizations, {[payload.name]: {description: payload.description, status: "Pending"}})
 }
 
 function AddAdmin(organization) {
@@ -47,5 +47,6 @@ function RemoveAdmin(organization) {
 }
 
 function SetLoadingStatus(organizations, organization) {
-    return Object.assign({}, organizations, {[organization]: {tournament = "Loading"}} ) // don't know if the deep copy here will work as intended, needs testing
+  organizations[organization].tournament = "Loading"
+  return organizations
 }

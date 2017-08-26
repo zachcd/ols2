@@ -16,7 +16,7 @@ const loadOrganizationEpic = action$ =>
     })
   })
 
-  export loadOrganizationEpic
+
 
 const loadTournamentsEpic = action$ =>
   action$.filter(action => action.type == LOAD_TOURNAMENTS)
@@ -31,4 +31,4 @@ const loadTournamentsEpic = action$ =>
     })
   })
 
-  export loadTournamentsEpic
+  export {loadOrganizationEpic, loadTournamentsEpic}

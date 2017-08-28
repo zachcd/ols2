@@ -9,4 +9,4 @@ const organizationSchema = new Schema({
   tournaments: [{type:Schema.Types.ObjectId, ref: 'Tournament'}]
 });
 
-module.exports = mongoose.model('Tournament', tournamentSchema);
+module.exports = mongoose.model('Organization', organizationSchema);

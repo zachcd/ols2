@@ -5,9 +5,10 @@ import Organization from '../../../models/Organization'
 const router = new api({ prefix: '/api/organizations' })
 
 router.get('/', async(ctx, next) => {
+  console.log(ctx)
   ctx.body = {
     organizations: {
-      
+
     }
   }
 })

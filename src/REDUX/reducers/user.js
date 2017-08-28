@@ -55,12 +55,6 @@ function LogOut(user, payload) {
   return null
 }
 
-function setStatus(user, payload) {
-  return Object.assign({},  user,  {
-          status: payload
-      })
-}
-
 function clearFail(user, payload) {
   return Object.assign({}, {
     status: payload

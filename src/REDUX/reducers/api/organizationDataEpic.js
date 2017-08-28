@@ -1,19 +1,23 @@
 import {LOAD_ORGANIZATIONS, LOAD_TOURNAMENTS} from '../../actions/OrganizationActions'
 import { Receive_Orgload, Fail_Orgload, Receive_TournamentLoad, Fail_TournamentLoad} from '../../actions/APIactions/APIOrganizationActions'
 import { ajax } from 'rxjs/observable/dom/ajax';
+import { Observable } from 'rxjs'
 
 
 const loadOrganizationEpic = action$ =>
   action$.filter(action => action.type === LOAD_ORGANIZATIONS)
   .mergeMap(action => {
     return ajax.get('http://localhost:3200/api/organizations')
-    .map(response => {
-      if (response.body.message === "Success") {
-        return Receive_Orgload(response.body.data)
-      } else {
-        return Fail_Orgload(response.body.message)
-      }
-    })
+      .map(response => {
+        if (response.body.message === "Success") {
+          return Receive_Orgload(response.body.data)
+        } else {
+          return Fail_Orgload(response.body.message)
+        }
+      })
+      .catch(error =>  {
+        return Observable.of(Fail_Orgload(error))
+      })
   })
 
 
@@ -23,11 +27,14 @@ const loadTournamentsEpic = action$ =>
   .mergeMap(action => {
     return ajax.get('http://localhost:3200/api/' + action.payload.organization)
     .map(response => {
-      if (response.body.message === "Success") {
+      if (response.body.message ===  "Success") {
         return Receive_TournamentLoad(action.payload.organization, response.body.data)
       } else {
         return Fail_TournamentLoad(response.body.message)
       }
+    })
+    .catch(error =>  {
+      return Observable.of(Fail_TournamentLoad(error))
     })
   })
 

@@ -1,6 +1,7 @@
 import {REGISTER, LOGIN, LINK_ACCOUNT, LOGOUT} from '../../actions/UserAccountActions'
 import {ReceiveRegister, FailRegister, ReceiveLogin, FailLogin} from '../../actions/APIactions/APIUserActions'
 import { ajax } from 'rxjs/observable/dom/ajax';
+import { Observable } from 'rxjs'
 
 const registerEpic = action$ =>
   action$.filter(action => action.type === REGISTER)
@@ -12,6 +13,9 @@ const registerEpic = action$ =>
           } else {
             return FailRegister("Failure")
           }
+        })
+        .catch(error =>  {
+          return Observable.of(FailRegister(error))
         })
       }
     );
@@ -26,6 +30,9 @@ const loginEpic = action$ =>
       } else {
         return FailLogin("Failure")
       }
+    })
+    .catch(error =>  {
+      return Observable.of(FailLogin(error))
     })
   })
 

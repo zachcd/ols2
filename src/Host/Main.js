@@ -15,13 +15,13 @@ class Main extends Component {
   }
 
   render (){
-    return(<div>{this.props.organizations}</div>)
+    return(<div>{GenerateOrgList(this.props.organizations)}</div>)
   }
 }
 
 const mapStateToProps = state => {
   return {
-    organizations: GenerateOrgList(Object.entries(state.organizations))
+    organizations: state.organizations
   }
 }
 
@@ -34,9 +34,14 @@ const mapDispatchToProps = dispatch => {
 }
 
 function GenerateOrgList(orgArray){
-  orgArray.map((organization) => {
-    return <li><h4>{organization[0]}</h4><div className="description">{organization[1].description}</div></li>
-  })
+  if (Array.isArray(orgArray)) {
+    console.log(orgArray)
+    return orgArray.map((organization) => {
+      return <li key={organization.name}><h4>{organization.name}</h4><div className="description">{organization.description}</div></li>
+    })
+  } else {
+    return <p>Loading</p>
+  }
 }
 const LinkedMain = connect(
   mapStateToProps,

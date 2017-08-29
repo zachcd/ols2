@@ -8,11 +8,11 @@ const loadOrganizationEpic = action$ =>
   action$.filter(action => action.type === LOAD_ORGANIZATIONS)
   .mergeMap(action => {
     return ajax.get('http://localhost:3200/api/organizations')
-      .map(response => {
-        if (response.body.message === "Success") {
-          return Receive_Orgload(response.body.data)
+      .map(ajx => {
+        if (ajx.response.message === "Success") {
+          return Receive_Orgload(ajx.response.data)
         } else {
-          return Fail_Orgload(response.body.message)
+          return Fail_Orgload(ajx.response.message)
         }
       })
       .catch(error =>  {
@@ -26,11 +26,11 @@ const loadTournamentsEpic = action$ =>
   action$.filter(action => action.type === LOAD_TOURNAMENTS)
   .mergeMap(action => {
     return ajax.get('http://localhost:3200/api/' + action.payload.organization)
-    .map(response => {
-      if (response.body.message ===  "Success") {
-        return Receive_TournamentLoad(action.payload.organization, response.body.data)
+    .map(ajx => {
+      if (ajx.response.message ===  "Success") {
+        return Receive_TournamentLoad(action.payload.organization, ajx.response.data)
       } else {
-        return Fail_TournamentLoad(response.body.message)
+        return Fail_TournamentLoad(ajx.response.message)
       }
     })
     .catch(error =>  {

@@ -1,8 +1,11 @@
-export function Organizations(organizations, payload) {
-  return Object.assign({}, organizations)
+function Organizations(organizations, payload) {
+  return payload
 }
 
-export function Tournament(organizations, payload) {
+function Tournament(organizations, payload) {
   organizations[payload.organization].tournaments = payload.tournaments
   return organizations
 }
+
+
+export {Organizations, Tournament}

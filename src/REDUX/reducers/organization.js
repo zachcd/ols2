@@ -1,6 +1,6 @@
 import { CREATE_ORGANIZATION, ADD_ADMIN, REMOVE_ADMIN, LOAD_ORGANIZATIONS, LOAD_TOURNAMENTS } from '../actions/OrganizationActions'
 import * as apiActions from '../actions/APIactions/APIOrganizationActions'
-import api from './api/apiOrganizationDataFunctions'
+import * as api from './api/apiOrganizationDataFunctions'
 
 export default function organizations(state={}, action) {
   switch(action.type) {
@@ -20,8 +20,7 @@ export default function organizations(state={}, action) {
       return Object.assign({}, state, SetLoadingStatus(state, action.payload.organization)
     )
     case apiActions.RECEIVE_ORGLOAD:
-      return Object.assign({}, state, api.Organizations(state, action.payload)
-    )
+      return api.Organizations(state, action.payload)
     case apiActions.FAIL_ORGLOAD:
       return Object.assign({}, state, {status: action.payload})
     case apiActions.RECEIVE_TOURNAMENTLOAD:

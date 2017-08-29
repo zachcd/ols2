@@ -54,18 +54,7 @@ app.use(registrationRouter.allowedMethods())
 app.use(organizationRouter.routes())
 app.use(organizationRouter.allowedMethods())
 
-Organization.count({}, (total)=> {
-  if (total < 1) {
-    let Pitt = new Organization({
-      name: "LoL@Pitt",
-      description: "University of Pittsburgh League of Legends Community",
-      admins: [],
-      owner: {},
-      tournaments: []
-    })
-    Pitt.save()
-  }
-})
+
 
 app.listen(port)
 console.log('The magic happens on port ' + port)

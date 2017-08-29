@@ -1,4 +1,4 @@
-import {REGISTER, LOGIN, LINK_ACCOUNT, LOGOUT} from '../../actions/UserAccountActions'
+import {REGISTER, LOGIN, LINK_ACCOUNT} from '../../actions/UserAccountActions'
 import {ReceiveRegister, FailRegister, ReceiveLogin, FailLogin} from '../../actions/APIactions/APIUserActions'
 import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs'
@@ -7,9 +7,9 @@ const registerEpic = action$ =>
   action$.filter(action => action.type === REGISTER)
   .mergeMap(action => {
        return ajax.post('http://localhost:3200/api/register',action.payload)
-        .map(response => {
-          if (response.body.result === "Success") {
-            return ReceiveRegister(response.body)
+        .map(ajx => {
+          if (ajx.response.result === "Success") {
+            return ReceiveRegister(ajx.response)
           } else {
             return FailRegister("Failure")
           }
@@ -24,9 +24,9 @@ const loginEpic = action$ =>
   action$.filter(action => action.type === LOGIN)
   .mergeMap(action => {
     return ajax.post('http://localhost:3200/api/login', action.payload)
-    .map(response => {
-      if (response.body.result === "Success") {
-        return ReceiveLogin(response.body)
+    .map(ajx => {
+      if (ajx.response.result === "Success") {
+        return ReceiveLogin(ajx.response)
       } else {
         return FailLogin("Failure")
       }

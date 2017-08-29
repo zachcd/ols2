@@ -5,10 +5,21 @@ import Organization from '../../../models/Organization'
 const router = new api({ prefix: '/api/organizations' })
 
 router.get('/', async(ctx, next) => {
-  console.log(ctx)
-  ctx.body = {
-    organizations: {
+  try {
 
+    ctx.status = 201
+
+    Organization.find({}, (organization)=> {
+      ctx.body = {
+        data: organization
+      }
+    })
+
+  } catch (err) {
+    ctx.status = 409
+    console.log('error:', err)
+    ctx.body =  {
+      error: 'general'
     }
   }
 })

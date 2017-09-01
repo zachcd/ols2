@@ -11,6 +11,7 @@ router.get('/', async(ctx, next) => {
       let Pitt = new Organization({
         name: "LoL@Pitt",
         description: "University of Pittsburgh League of Legends Community",
+        url: "pitt",
         admins: [],
         tournaments: []
       })
@@ -21,7 +22,7 @@ router.get('/', async(ctx, next) => {
   try {
     console.log("made it here")
 
-    let organization =  await Organization.find({}).select('-_id name description').exec()
+    let organization =  await Organization.find({}).select('-_id name description url').exec()
     ctx.body = { message: "Success", data: organization}
 
   } catch (err) {

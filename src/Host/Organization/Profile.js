@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import {connect} from 'react-redux'
+import { Load_Tournaments } from '../REDUX/actions/OrganizationActions'
 
 // if nothing in Organization is opened
   //display Tournaments
@@ -11,13 +12,30 @@ import { Link } from 'react-router-dom'
     render() {
       return (
         <div className="Organization" id="{this.props.org}">
-          <Link>Teams</Link>
-          <Link>Upcoming</Link>
+          {Tournaments(this.props.organization.tournaments)}
 
         </div>
       )
     }
   }
 
+  const mapStateToProps = (state, ownProps) => {
+    return {
+      organization: state.organizations[ownProps.params.organization]
+    }
+  }
 
-export default OrgProfile
+  const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+      load: () => {
+        dispatch(Load_Tournament)
+      }
+    }
+  }
+
+  const LinkedProfile = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(OrgProfile)
+
+export default LinkedProfile

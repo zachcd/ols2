@@ -62,8 +62,7 @@ class App extends Component {
             {this.state.modal}
 
             <div>
-              <Route path="/pitt"
-              render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards}/>} />
+              <Route path="/:org" render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards}/>} />
               <Route path="/" render={() => <LinkedMain openCards={this.openCards}/>}/>
             </div>
             </div>

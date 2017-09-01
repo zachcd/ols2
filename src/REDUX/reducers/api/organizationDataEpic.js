@@ -25,7 +25,7 @@ const loadOrganizationEpic = action$ =>
 const loadTournamentsEpic = action$ =>
   action$.filter(action => action.type === LOAD_TOURNAMENTS)
   .mergeMap(action => {
-    return ajax.get('http://localhost:3200/api/' + action.payload.organization)
+    return ajax.get('http://localhost:3200/api/organizations/' + action.payload.organization)
     .map(ajx => {
       if (ajx.response.message ===  "Success") {
         return Receive_TournamentLoad(action.payload.organization, ajx.response.data)

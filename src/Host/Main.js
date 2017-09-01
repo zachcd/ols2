@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { Load_Organizations } from '../REDUX/actions/OrganizationActions'
 // if nothing in Organization is opened
@@ -37,7 +37,7 @@ function GenerateOrgList(orgArray){
   if (Array.isArray(orgArray)) {
     console.log(orgArray)
     return orgArray.map((organization) => {
-      return <li key={organization.name}><h4>{organization.name}</h4><div className="description">{organization.description}</div></li>
+      return <li key={organization.name}><Link to={organization.url} id="nav1"><h4>{organization.name}</h4></Link><div className="description">{organization.description}</div></li>
     })
   } else {
     return <p>Loading</p>

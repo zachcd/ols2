@@ -5,6 +5,7 @@ const userSchema = new Schema({
 	isOwner: Boolean,
 	isPlayer: Boolean,
 	isAdmin: Boolean,
+	token: String,
 	username: {
 		type: String,
 		required: true,

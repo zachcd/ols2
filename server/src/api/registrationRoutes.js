@@ -1,6 +1,7 @@
 import api from 'koa-router'
 import mongoose from 'mongoose'
 import User from '../../../models/User'
+import uuidv4 from 'uuid/v4'
 
 const router = new api({ prefix: '/api/register' })
 
@@ -19,14 +20,16 @@ router
       const user = new User({
         username: body.username,
         password: body.password,
-        email: body.email
+        email: body.email,
+        token: uuidv4()
       })
 
       let promise = await user.save();
       ctx.status = 201
       ctx.body = {
         message: 'Success',
-        username: body.username
+        username: body.username,
+        token: user.token
       }
 
     } catch (err) {

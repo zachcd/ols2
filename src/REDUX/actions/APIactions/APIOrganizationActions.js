@@ -1,4 +1,4 @@
-export const RECEIVE_ORGLOAD = "RECEIVE_ORGLAD"
+export const RECEIVE_ORGLOAD = "RECEIVE_ORGLOAD"
 export const FAIL_ORGLOAD = "FAIL_ORGLOAD"
 
 

@@ -34,7 +34,6 @@ const store = createStore(olsApp,
 );
 // sessionService.initSessionService(store);
 
-console.log(store)
 class App extends Component {
 
   constructor(props) {
@@ -62,7 +61,7 @@ class App extends Component {
             {this.state.modal}
 
             <div>
-              <Route path="/:org" render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards}/>} />
+              <Route path="/:org" render={() => <OrgProfile openCards={this.openCards}/>} />
               <Route path="/" render={() => <LinkedMain openCards={this.openCards}/>}/>
             </div>
             </div>
@@ -72,12 +71,12 @@ class App extends Component {
   }
   openLogin() {
     console.log("opening Login")
-    this.setState({modal: <div className="modalBackground" onClick={(e) => { if (e.target === e.currentTarget) { this.close()}}}><div className="modalWrapper"><LinkedLogin /></div></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => { if (e.target === e.currentTarget) { this.close()}}}><div className="modalWrapper"><LinkedLogin close={() => this.close()} /></div></div>})
 
   }
   openRegister() {
     console.log("opening Register")
-    this.setState({modal: <div className="modalBackground" onClick={(e) => {if (e.target === e.currentTarget){ this.close()}}}><div className="modalWrapper"><LinkedRegister /></div></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => {if (e.target === e.currentTarget){ this.close()}}}><div className="modalWrapper"><LinkedRegister close={() => this.close()}/></div></div>})
   }
   openCards() {
     this.setState({modal: <CardCollection />})

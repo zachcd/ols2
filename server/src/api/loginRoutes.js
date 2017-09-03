@@ -11,11 +11,9 @@ router.post('/', async(ctx, next) => {
     const body = ctx.request.body
     console.log("USERNAME: " + body.username)
 
-    let query = User.findOne({username: body.username, password: body.password})
+    let query = User.findOneAndUpdate({username: body.username, password: body.password}, {token: uuidv4()})
 
     let userEntry = await query
-    userEntry.token = uuidv4();
-    await userEntry.save();
     ctx.status = 201
     ctx.body = {
       message: 'Success',

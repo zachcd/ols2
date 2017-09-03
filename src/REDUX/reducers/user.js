@@ -1,6 +1,6 @@
 import {LOGIN, LOGOUT, REGISTER, LINK_ACCOUNT} from '../actions/UserAccountActions'
 import * as apiActions from '../actions/APIactions/APIUserActions'
-import api from './api/apiAccountFunctions'
+import * as api from './api/apiAccountFunctions'
 
 function user(state = false, action) {
   switch(action.type) {
@@ -12,19 +12,18 @@ function user(state = false, action) {
       return Object.assign({}, state, LinkAccount(state || {}, action.payload)
       )
     case LOGOUT:
-      return Object.assign({}, state, LogOut(state || {}, action.payload)
-        )
+      return false
     case apiActions.RECEIVE_LOGIN:
-      return Object.assign({}, state, api.Login(state.user || {}, action.payload)
+      return Object.assign({}, state, api.Login(state || {}, action.payload)
         )
     case apiActions.FAIL_LOGIN:
-      return Object.assign({}, state, clearFail(state.user || {}, "LoginFailed")
+      return Object.assign({}, state, clearFail(state || {}, "LoginFailed")
         )
     case apiActions.RECEIVE_REGISTER:
-      return Object.assign({}, state, api.Register(state.user || {}, action.payload)
+      return Object.assign({}, state, api.Register(state || {}, action.payload)
         )
     case apiActions.FAIL_REGISTER:
-      return Object.assign({}, state, clearFail(state.user || {}, "RegisterFailed")
+      return Object.assign({}, state, clearFail(state || {}, "RegisterFailed")
         )
     default:
       return state
@@ -43,16 +42,11 @@ function Register(user, payload) {
 
 function Login(user, payload) {
   return Object.assign({},  user,  {
-          username: payload.username,
-          password: payload.password,
           status: "PendingAuthentication"
       })
 }
 function LinkAccount(user, payload) {
   return user
-}
-function LogOut(user, payload) {
-  return null
 }
 
 function clearFail(user, payload) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { Load_Tournaments } from '../REDUX/actions/OrganizationActions'
+import { Load_Tournaments } from '../../REDUX/actions/OrganizationActions'
 
 // if nothing in Organization is opened
   //display Tournaments
@@ -11,8 +11,8 @@ import { Load_Tournaments } from '../REDUX/actions/OrganizationActions'
   class OrgProfile extends Component {
     render() {
       return (
-        <div className="Organization" id="{this.props.org}">
-          {Tournaments(this.props.organization.tournaments)}
+        <div className="Organization" id="{this.props.organization.name}">
+          {Tournaments(this.props.organization.url, this.props.organization.tournaments)}
 
         </div>
       )
@@ -21,16 +21,22 @@ import { Load_Tournaments } from '../REDUX/actions/OrganizationActions'
 
   const mapStateToProps = (state, ownProps) => {
     return {
-      organization: state.organizations[ownProps.params.organization]
+      organization: state.organizations[ownProps.params.org]
     }
   }
 
   const mapDispatchToProps = (dispatch, ownProps) => {
     return {
       load: () => {
-        dispatch(Load_Tournament)
+        dispatch(Load_Tournaments(ownProps.params.org))
       }
     }
+  }
+
+  const Tournaments = (organizationUrl, tournamentsList) => {
+    return tournamentsList.map((tournament)=> {
+      return <div><h3><Link to={organizationUrl + "/" + tournament.url}>{tournament.name}</Link></h3></div>
+    })
   }
 
   const LinkedProfile = connect(

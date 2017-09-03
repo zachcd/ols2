@@ -1,13 +1,17 @@
-export function Login(user, payload) {
+function Login(user, payload) {
   return Object.assign({},  user,  {
           username: payload.username,
+          token: payload.token,
           status: "LoggedIn"
       })
 }
 
-export function Register(user, payload) {
+function Register(user, payload) {
   return Object.assign({},  user,  {
           username: payload.username,
+          token: payload.token,
           status: "LoggedIn"
       })
 }
+
+export {Login, Register}

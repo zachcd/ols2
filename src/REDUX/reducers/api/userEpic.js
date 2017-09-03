@@ -8,7 +8,7 @@ const registerEpic = action$ =>
   .mergeMap(action => {
        return ajax.post('http://localhost:3200/api/register',action.payload)
         .map(ajx => {
-          if (ajx.response.result === "Success") {
+          if (ajx.response.message === "Success") {
             return ReceiveRegister(ajx.response)
           } else {
             return FailRegister("Failure")
@@ -25,7 +25,8 @@ const loginEpic = action$ =>
   .mergeMap(action => {
     return ajax.post('http://localhost:3200/api/login', action.payload)
     .map(ajx => {
-      if (ajx.response.result === "Success") {
+      console.log(ajx)
+      if (ajx.response.message === "Success") {
         return ReceiveLogin(ajx.response)
       } else {
         return FailLogin("Failure")

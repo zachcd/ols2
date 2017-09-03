@@ -15,6 +15,11 @@ class Login extends Component  {
     };
   }
 
+  componentWillReceiveProps(props) {
+    if (props.userStatus === "LoggedIn") {
+      props.close()
+    }
+  }
 
   render() {
     return (
@@ -36,7 +41,7 @@ class Login extends Component  {
           <Button type="submit">
               Login
             </Button>
-          <StatusCheck status={this.props.userStatus} />
+          <StatusCheck status={this.props.userStatus} close={() => this.props.close()}/>
         </form>
       </div>
     )

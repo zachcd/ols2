@@ -29,7 +29,7 @@ router
       ctx.body = {
         message: 'Success',
         username: body.username,
-        token: user.token
+        token: user.token,
       }
 
     } catch (err) {

@@ -30,11 +30,11 @@ export function Load_Organizations() {
     payload: {}
   }
 }
-export function Load_Tournaments(organization_name) {
+export function Load_Tournaments(organization_ID) {
   return {
     type: LOAD_TOURNAMENTS,
     payload: {
-      organization: organization_name
+      organization: organization_ID
     }
   }
 }

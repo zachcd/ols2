@@ -61,8 +61,8 @@ class App extends Component {
             {this.state.modal}
 
             <div>
-              <Route path="/:org" render={() => <OrgProfile openCards={this.openCards}/>} />
-              <Route path="/" render={() => <LinkedMain openCards={this.openCards}/>}/>
+              <Route path="/:org" render={(props) => <OrgProfile openCards={this.openCards}  {...props}/>} />
+              <Route exact path="/" render={(props) => <LinkedMain openCards={this.openCards} {...props}/>}/>
             </div>
             </div>
         </BrowserRouter>

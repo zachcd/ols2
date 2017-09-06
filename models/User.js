@@ -14,6 +14,7 @@ const userSchema = new Schema({
 	},
 	password: String,
 	email: String,
+	admin: [{ type: Schema.Types.ObjectId, ref: 'Organization'}],
 	team: { type: Schema.Types.ObjectId, ref: 'Team'},
   accounts: [{ type: Schema.Types.ObjectId, ref: 'Player'}]
 });

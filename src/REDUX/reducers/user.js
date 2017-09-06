@@ -41,9 +41,13 @@ function Register(user, payload) {
 }
 
 function Login(user, payload) {
-  return Object.assign({},  user,  {
-          status: "PendingAuthentication"
-      })
+  if (user.status !== "LoggedIn") {
+    return Object.assign({},  user,  {
+            status: "PendingAuthentication"
+        })
+    } else {
+      return user
+    }
 }
 function LinkAccount(user, payload) {
   return user

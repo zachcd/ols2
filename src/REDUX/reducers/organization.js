@@ -17,7 +17,7 @@ export default function organizations(state={}, action) {
       return Object.assign({}, state, { status: "Loading"}
         )
     case LOAD_TOURNAMENTS:
-      return Object.assign({}, state, SetLoadingStatus(state, action.payload.organization)
+      return Object.assign({}, state, SetLoadingStatus(state[action.payload.organization]|| {})
     )
     case apiActions.RECEIVE_ORGLOAD:
       return api.Organizations(state, action.payload)
@@ -47,7 +47,7 @@ function RemoveAdmin(organization) {
   return organization
 }
 
-function SetLoadingStatus(organizations, organization) {
-  organizations[organization].tournament = "Loading"
+function SetLoadingStatus(organization) {
+  Object.assign(organization, {tournament: "Loading"})
   return organizations
 }

@@ -18,7 +18,8 @@ router.post('/', async(ctx, next) => {
     ctx.body = {
       message: 'Success',
       username: body.username,
-      token: userEntry.token
+      token: userEntry.token,
+      admin: userEntry.admin
     }
 
   } catch (err) {

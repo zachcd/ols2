@@ -57,6 +57,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const getStatus = (user) => {
+  console.log(user)
   if (user) {
     if (user.status) {
       return user.status

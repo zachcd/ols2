@@ -1,6 +1,7 @@
 export const LOGIN = 'LOGIN'
 export const REGISTER ='REGISTER'
 export const LINK_ACCOUNT = 'LINK_ACCOUNT'
+export const LOGOUT = 'LOGOUT'
 
 export function Login(username, password) {
   return { type: LOGIN,
@@ -11,7 +12,13 @@ export function Login(username, password) {
     }
   }
 }
-
+export function Logout() {
+  return { type: LOGOUT,
+    payload: {
+      logout: true
+    }
+  }
+}
 export function Register(userDetails) {
   return { type: REGISTER,
     payload:

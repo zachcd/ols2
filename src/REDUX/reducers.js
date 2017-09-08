@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { combineEpics } from 'redux-observable';
+import {combineReducers} from 'redux'
+import {combineEpics} from 'redux-observable';
 import user from './reducers/user'
 import organizations from './reducers/organization'
 import {registerEpic, loginEpic} from './reducers/api/userEpic'

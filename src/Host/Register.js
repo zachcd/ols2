@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {connect} from 'react-redux'
-import {Register as RegisterAction } from '../REDUX/actions/UserAccountActions'
-import { Button, Input } from 'semantic-ui-react'
+import {Register as RegisterAction} from '../REDUX/actions/UserAccountActions'
+import {Button, Input} from 'semantic-ui-react'
 import './Register.css'
 
-class Register extends Component  {
+class Register extends Component {
 
   constructor(props) {
     super(props);
@@ -17,35 +17,38 @@ class Register extends Component  {
     };
   }
 
-
   render() {
     return (
       <div className="modal">
         <form onSubmit={e => {
-          e.preventDefault()
-          if(this.state.password === this.state.confirmPass) {
-            let user = {username: this.state.username, password: this.state.password, email: this.state.email}
+          e.preventDefault()if (this.state.password === this.state.confirmPass) {
+            let user = {
+              username: this.state.username,
+              password: this.state.password,
+              email: this.state.email
+            }
             this.props.register(user)
           }
-
         }}>
-          <Input type="text" onChange={ event => {
+          <Input type="text" onChange={event => {
             this.setState({username: event.target.value})
-          }} icon='user' iconPosition='left' placeholder='Username'></Input> <br/>
-          <Input type="password" onChange={ event => {
+          }} icon='user' iconPosition='left' placeholder='Username'></Input>
+          <br/>
+          <Input type="password" onChange={event => {
             this.setState({password: event.target.value})
           }} icon='lock' iconPosition='left' placeholder='Password'></Input><br/>
-          <Input type="password" onChange={ event => {
+          <Input type="password" onChange={event => {
             this.setState({confirmPass: event.target.value})
           }} icon='lock' iconPosition='left' placeholder='Confirm Password'></Input><br/>
-          <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/><br />
-          <Input type="text" onChange={ event => {
+          <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/><br/>
+          <Input icon='inbox' type="text" onChange={event => {
             this.setState({email: event.target.value})
-          }}icon='inbox' iconPosition='left' placeholder='Email'></Input> <br />
+          }} iconPosition='left' placeholder='Email'></Input>
+          <br/>
           <Button type="submit">
-              Register Account
-            </Button>
-          <StatusCheck status={this.props.userStatus} />
+            Register Account
+          </Button>
+          <StatusCheck status={this.props.userStatus}/>
         </form>
       </div>
     )
@@ -79,27 +82,30 @@ const mapStateToProps = state => {
 }
 const PassCheck = (props) => {
   if (props.pass !== props.confirm) {
-    return <div style={{color: 'red'}}>Passwords must match</div>
+    return <div style={{
+      color: 'red'
+    }}>Passwords must match</div>
   } else {
     return null
   }
 }
 const StatusCheck = (props) => {
   if (props.status === "AwaitingServer") {
-    return <div> Awaiting a response from the server on your Registration</div>
+    return <div>
+      Awaiting a response from the server on your Registration</div>
   } else if (props.status === "RegisterFailed") {
-    return <div> That username is reserved </div>
+    return <div>
+      That username is reserved
+    </div>
   } else if (props.status === "LoginFailed") {
-    return <div> Yeah, you cant just use your League login </div>
+    return <div>
+      Yeah, you cant just use your League login
+    </div>
   } else {
     return null
   }
 }
 
-
-const LinkedRegister = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register)
+const LinkedRegister = connect(mapStateToProps, mapDispatchToProps)(Register)
 
 export default LinkedRegister

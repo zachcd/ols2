@@ -1,7 +1,7 @@
 function Organizations(organizations, payload) {
   let orgObj = {}
   payload.forEach((org) => {
-    if (!organizations[org.url]){
+    if (!organizations[org.url]) {
       orgObj[org.url] = org
     } else {
       orgObj[org.url] = {}
@@ -12,9 +12,8 @@ function Organizations(organizations, payload) {
 }
 
 function Tournament(organizations, payload) {
-  Object.assign(organizations[payload.url]||{}, payload)
+  Object.assign(organizations[payload.url] || {}, payload)
   return organizations
 }
-
 
 export {Organizations, Tournament}

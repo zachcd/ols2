@@ -23,17 +23,14 @@ mongoose.Promise = global.Promise
 
 const db = mongoose.connect('mongodb://localhost/ols2', option)
 
-const app = new koa()
-  .use(body())
-  .use(logger())
-  .use(cors())
+const app = new koa().use(body()).use(logger()).use(cors())
 
 const router = new api()
-router
-  .get('/', (ctx) => ctx.body = {hello: 'world'})
-  .get('/error/test', async () => {
-    throw Error('Error handling works')
-  })
+router.get('/', (ctx) => ctx.body = {
+  hello: 'world'
+}).get('/error/test', async() => {
+  throw Error('Error handling works')
+})
 
 app.use(router.routes())
 app.use(router.allowedMethods())
@@ -53,8 +50,6 @@ app.use(registrationRouter.routes())
 app.use(registrationRouter.allowedMethods())
 app.use(organizationRouter.routes())
 app.use(organizationRouter.allowedMethods())
-
-
 
 app.listen(port)
 console.log('The magic happens on port ' + port)

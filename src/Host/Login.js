@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import {connect} from 'react-redux'
-import {Login as LoginAction } from '../REDUX/actions/UserAccountActions'
-import { Button, Input } from 'semantic-ui-react'
+import {Login as LoginAction} from '../REDUX/actions/UserAccountActions'
+import {Button, Input} from 'semantic-ui-react'
 import './Login.css'
 
-class Login extends Component  {
+class Login extends Component {
 
   constructor(props) {
     super(props);
@@ -25,22 +25,24 @@ class Login extends Component  {
     return (
       <div className="modal">
         <form onSubmit={e => {
-          e.preventDefault()
-          if(this.state.password) {
-            let user = {username: this.state.username, password: this.state.password}
+          e.preventDefault()if (this.state.password) {
+            let user = {
+              username: this.state.username,
+              password: this.state.password
+            }
             this.props.login(user)
           }
-
         }}>
-          <Input type="text" onChange={ event => {
+          <Input type="text" onChange={event => {
             this.setState({username: event.target.value})
-          }} icon='user' iconPosition='left' placeholder='Username'></Input> <br/>
-          <Input type="password" onChange={ event => {
+          }} icon='user' iconPosition='left' placeholder='Username'></Input>
+          <br/>
+          <Input type="password" onChange={event => {
             this.setState({password: event.target.value})
           }} icon='lock' iconPosition='left' placeholder='Password'></Input><br/>
           <Button type="submit">
-              Login
-            </Button>
+            Login
+          </Button>
           <StatusCheck status={this.props.userStatus} close={() => this.props.close()}/>
         </form>
       </div>
@@ -76,18 +78,17 @@ const mapStateToProps = state => {
 }
 const StatusCheck = (props) => {
   if (props.status === "AwaitingServer") {
-    return <div> Awaiting a response from the server on your Login</div>
+    return <div>
+      Awaiting a response from the server on your Login</div>
   } else if (props.status === "LoginFailed") {
-    return <div> Login Failed </div>
+    return <div>
+      Login Failed
+    </div>
   } else {
     return null
   }
 }
 
-
-const LinkedLogin = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
+const LinkedLogin = connect(mapStateToProps, mapDispatchToProps)(Login)
 
 export default LinkedLogin

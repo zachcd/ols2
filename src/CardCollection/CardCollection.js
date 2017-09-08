@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
 
 class CardCollection extends Component {
   constructor(props) {
-  super(props);
-  this.state = {
+    super(props);
+    this.state = {
       modal: null
     };
   }
@@ -12,10 +11,8 @@ class CardCollection extends Component {
   render() {
     // let cardsToDisplay = this.filterCards(this.props.filter)
     // let filterSelected = this.filterDisplaySelected(this.props.filter)
-    return(
-      <div className="CardCollection">
-
-      </div>
+    return (
+      <div className="CardCollection"></div>
     )
   }
 }

@@ -28,7 +28,7 @@ class Login extends Component  {
           e.preventDefault()
           if(this.state.password) {
             let user = {username: this.state.username, password: this.state.password}
-            this.props.register(user)
+            this.props.login(user)
           }
 
         }}>
@@ -50,7 +50,7 @@ class Login extends Component  {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: user => {
+    login: user => {
       dispatch(LoginAction(user))
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { LogOut } from './REDUX/actions/UserAccountActions'
+import { Logout } from './REDUX/actions/UserAccountActions'
 import './MainNav.css'
 
 
@@ -18,7 +18,7 @@ const Nav = (props) => {
         <Link to="/" id="nav1">Organizations</Link>
         {orgLink}
         <div onClick={() => props.openCards()} id="nav2">Cards</div>
-        <div onClick={() => props.logout()}id="nav3">Settings</div>
+        <div onClick={() => props.logout()}id="nav3">Logout</div>
       </div>
     )
   } else {
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
-      dispatch(LogOut())
+      dispatch(Logout())
     }
   }
 }

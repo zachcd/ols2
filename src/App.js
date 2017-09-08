@@ -11,7 +11,7 @@ import LinkedLogin from './Host/Login'
 import LinkedRegister from './Host/Register'
 import CardCollection from './CardCollection/CardCollection'
 import OrgProfile from './Host/Organization/Profile'
-import Main from './Host/Main'
+import LinkedMain from './Host/Main'
 import olsApp, {olsEpics} from './REDUX/reducers'
 import { createEpicMiddleware } from 'redux-observable';
 import { compose, applyMiddleware } from 'redux';
@@ -34,12 +34,11 @@ const store = createStore(olsApp,
 );
 // sessionService.initSessionService(store);
 
-console.log(store)
 class App extends Component {
 
   constructor(props) {
-  super(props);
-  this.state = {
+    super(props);
+    this.state = {
       modal: null
     };
     this.openLogin = this.openLogin.bind(this)
@@ -62,9 +61,8 @@ class App extends Component {
             {this.state.modal}
 
             <div>
-              <Route path="/pitt"
-              render={() => <OrgProfile org="University of Pittsburgh" openCards={this.openCards} close={this.close} />} />
-              <Route path="/" render={() => <Main openCards={this.openCards} close={this.close}/>}/>
+              <Route path="/:org" render={(props) => <OrgProfile openCards={this.openCards}  {...props}/>} />
+              <Route exact path="/" render={(props) => <LinkedMain openCards={this.openCards} {...props}/>}/>
             </div>
             </div>
         </BrowserRouter>
@@ -73,12 +71,12 @@ class App extends Component {
   }
   openLogin() {
     console.log("opening Login")
-    this.setState({modal: <div className="modalBackground" onClick={(e) => { if (e.target === e.currentTarget) { this.close()}}}><div className="modalWrapper"><LinkedLogin /></div></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => { if (e.target === e.currentTarget) { this.close()}}}><div className="modalWrapper"><LinkedLogin close={() => this.close()} /></div></div>})
 
   }
   openRegister() {
     console.log("opening Register")
-    this.setState({modal: <div className="modalBackground" onClick={(e) => {if (e.target === e.currentTarget){ this.close()}}}><div className="modalWrapper"><LinkedRegister /></div></div>})
+    this.setState({modal: <div className="modalBackground" onClick={(e) => {if (e.target === e.currentTarget){ this.close()}}}><div className="modalWrapper"><LinkedRegister close={() => this.close()}/></div></div>})
   }
   openCards() {
     this.setState({modal: <CardCollection />})

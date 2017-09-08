@@ -15,6 +15,11 @@ class Login extends Component  {
     };
   }
 
+  componentWillReceiveProps(props) {
+    if (props.userStatus === "LoggedIn") {
+      props.close()
+    }
+  }
 
   render() {
     return (
@@ -23,7 +28,7 @@ class Login extends Component  {
           e.preventDefault()
           if(this.state.password) {
             let user = {username: this.state.username, password: this.state.password}
-            this.props.register(user)
+            this.props.login(user)
           }
 
         }}>
@@ -36,7 +41,7 @@ class Login extends Component  {
           <Button type="submit">
               Login
             </Button>
-          <StatusCheck status={this.props.userStatus} />
+          <StatusCheck status={this.props.userStatus} close={() => this.props.close()}/>
         </form>
       </div>
     )
@@ -45,13 +50,14 @@ class Login extends Component  {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: user => {
+    login: user => {
       dispatch(LoginAction(user))
     }
   }
 }
 
 const getStatus = (user) => {
+  console.log(user)
   if (user) {
     if (user.status) {
       return user.status

@@ -1,51 +1,30 @@
 import {LOGIN, LOGOUT, REGISTER, LINK_ACCOUNT} from '../actions/UserAccountActions'
 import * as apiActions from '../actions/APIactions/APIUserActions'
-import api from './api/apiAccountFunctions'
+import * as api from './api/apiAccountFunctions'
 
 function user(state = false, action) {
   switch(action.type) {
     case REGISTER:
-      return Object.assign({}, state, {
-        user: Register(state.user || {}, action.payload)
-      })
+      return Object.assign({}, state, Register(state || {}, action.payload))
     case LOGIN:
-      return Object.assign({}, state, {
-        user: Login(state.user || {}, action.payload)
-      })
+      return Object.assign({}, state,  Login(state || {}, action.payload))
     case LINK_ACCOUNT:
-      return Object.assign({}, state, {
-        user: LinkAccount(state.user || {}, action.payload)
-      })
+      return Object.assign({}, state, LinkAccount(state || {}, action.payload)
+      )
     case LOGOUT:
-      return Object.assign({}, state, {
-        user: LogOut(state.user || {}, action.payload)
-      })
-    case apiActions.SEND_LOGIN:
-      api.sendLogin(state, action) //this is the primary call that passes information
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "AwaitingServer")
-      })
+      return false
     case apiActions.RECEIVE_LOGIN:
-      return Object.assign({}, state, {
-        user: api.Login(state.user || {}, action.payload)
-      })
+      return Object.assign({}, state, api.Login(state || {}, action.payload)
+        )
     case apiActions.FAIL_LOGIN:
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "LoginFailed")
-      })
-    case apiActions.SEND_REGISTER:
-      api.sendRegister(state, action) //this is the primary call that passes information
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "AwaitingServer")
-      })
+      return Object.assign({}, state, clearFail(state || {}, "LoginFailed")
+        )
     case apiActions.RECEIVE_REGISTER:
-      return Object.assign({}, state, {
-        user: api.Register(state.user || {}, action.payload)
-      })
+      return Object.assign({}, state, api.Register(state || {}, action.payload)
+        )
     case apiActions.FAIL_REGISTER:
-      return Object.assign({}, state, {
-        user: setStatus(state.user || {}, "RegisterFailed")
-      })
+      return Object.assign({}, state, clearFail(state || {}, "RegisterFailed")
+        )
     default:
       return state
   }
@@ -53,7 +32,6 @@ function user(state = false, action) {
 
 
 function Register(user, payload) {
-  console.log(payload)
   return Object.assign({},  user,  {
           username: payload.username,
           password: payload.password,
@@ -63,23 +41,21 @@ function Register(user, payload) {
 }
 
 function Login(user, payload) {
-  return Object.assign({},  user,  {
-          username: payload.username,
-          password: payload.password,
-          status: "PendingAuthentication"
-      })
+  if (user.status !== "LoggedIn") {
+    return Object.assign({},  user,  {
+            status: "PendingAuthentication"
+        })
+    } else {
+      return user
+    }
 }
 function LinkAccount(user, payload) {
   return user
 }
-function LogOut(user, payload) {
-  return null
-}
 
-function setStatus(user, payload) {
-  return Object.assign({},  user,  {
-          status: payload
-      })
+function clearFail(user, payload) {
+  return Object.assign({}, {
+    status: payload
+  })
 }
-
 export default user

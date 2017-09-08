@@ -1,21 +1,18 @@
-export function sendLogin(state, action) {
-  console.log("sending Login")
-}
-
-export function sendRegister(state, action){
-  console.log("sending register")
-}
-
-export function Login(user, payload) {
+function Login(user, payload) {
   return Object.assign({},  user,  {
           username: payload.username,
+          token: payload.token,
+          admin: payload.admin,
           status: "LoggedIn"
       })
 }
 
-export function Register(user, payload) {
+function Register(user, payload) {
   return Object.assign({},  user,  {
           username: payload.username,
+          token: payload.token,
           status: "LoggedIn"
       })
 }
+
+export {Login, Register}

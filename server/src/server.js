@@ -10,8 +10,10 @@ import playerRouter from './api/playerRoutes'
 import postRouter from './api/postRoutes'
 import gameRouter from './api/gameRoutes'
 import loginRouter from './api/loginRoutes'
-import registrationRouter from './api/registrationRoutes.js'
+import registrationRouter from './api/registrationRoutes'
+import organizationRouter from './api/organizationRoutes'
 import cors from 'koa-cors'
+import Organization from '../../models/Organization'
 
 const port = (process.env.PORT || 3200)
 const option = {
@@ -49,6 +51,10 @@ app.use(loginRouter.routes())
 app.use(loginRouter.allowedMethods())
 app.use(registrationRouter.routes())
 app.use(registrationRouter.allowedMethods())
+app.use(organizationRouter.routes())
+app.use(organizationRouter.allowedMethods())
+
+
 
 app.listen(port)
 console.log('The magic happens on port ' + port)

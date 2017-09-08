@@ -3,12 +3,12 @@ export const REGISTER ='REGISTER'
 export const LINK_ACCOUNT = 'LINK_ACCOUNT'
 export const LOGOUT = 'LOGOUT'
 
-export function Login(username, password) {
+export function Login(userData) {
   return { type: LOGIN,
     payload:
     {
-      username: username,
-      password: password
+      username: userData.username,
+      password: userData.password
     }
   }
 }

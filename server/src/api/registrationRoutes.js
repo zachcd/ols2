@@ -1,6 +1,7 @@
 import api from 'koa-router'
 import mongoose from 'mongoose'
 import User from '../../../models/User'
+import uuidv4 from 'uuid/v4'
 
 const router = new api({ prefix: '/api/register' })
 
@@ -10,21 +11,41 @@ router
   })
 
   .post('/', async(ctx, next) => {
-    console.log("POST : /api/register/")
-    const body = ctx.request.body
-    console.log("USERNAME: " + body.username)
+    try {
 
-    const user = new User({
-      username: body.username,
-      password: body.password,
-      email: body.email
-    })
+      console.log("POST : /api/register/")
+      const body = ctx.request.body
+      console.log("USERNAME: " + body.username)
 
-    user.save(function (err) {
-      if (err) console.log("error")
-    })
+      const user = new User({
+        username: body.username,
+        password: body.password,
+        email: body.email,
+        token: uuidv4()
+      })
 
-    ctx.body = 'Success'
+      let promise = await user.save();
+      ctx.status = 201
+      ctx.body = {
+        message: 'Success',
+        username: body.username,
+        token: user.token,
+      }
+
+    } catch (err) {
+      ctx.status = 409
+      console.log('error:', err)
+      if(err.message.includes("duplicate key")) {
+        console.log('duplicate')
+        ctx.body =  {
+          error: 'duplicate'
+        }
+      }
+      ctx.body =  {
+        error: 'general'
+      }
+    }
+
   })
 
 

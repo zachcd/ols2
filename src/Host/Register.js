@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 import {Register as RegisterAction } from '../REDUX/actions/UserAccountActions'
-import { Button, Input } from 'semantic-ui-react'
 import './Register.css'
 
 class Register extends Component  {

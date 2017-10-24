@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux'
 import {Login as LoginAction } from '../REDUX/actions/UserAccountActions'
-import { Button, Input } from 'semantic-ui-react'
 import './Login.css'
 
 class Login extends Component  {

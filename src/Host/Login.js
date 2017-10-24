@@ -31,15 +31,15 @@ class Login extends Component  {
           }
 
         }}>
-          <Input type="text" onChange={ event => {
+          <input type="text" onChange={ event => {
             this.setState({username: event.target.value})
-          }} icon='user' iconPosition='left' placeholder='Username'></Input> <br/>
-          <Input type="password" onChange={ event => {
+          }} icon='user' placeholder='Username'></input> <br/>
+          <input type="password" onChange={ event => {
             this.setState({password: event.target.value})
-          }} icon='lock' iconPosition='left' placeholder='Password'></Input><br/>
-          <Button type="submit">
+          }} icon='lock' placeholder='Password'></input><br/>
+          <button type="submit">
               Login
-            </Button>
+            </button>
           <StatusCheck status={this.props.userStatus} close={() => this.props.close()}/>
         </form>
       </div>

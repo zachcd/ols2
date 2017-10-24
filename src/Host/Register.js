@@ -28,22 +28,22 @@ class Register extends Component  {
           }
 
         }}>
-          <Input type="text" onChange={ event => {
+          <input type="text" onChange={ event => {
             this.setState({username: event.target.value})
-          }} icon='user' iconPosition='left' placeholder='Username'></Input> <br/>
-          <Input type="password" onChange={ event => {
+          }} icon='user' iconPosition='left' placeholder='Username'></input> <br/>
+          <input type="password" onChange={ event => {
             this.setState({password: event.target.value})
-          }} icon='lock' iconPosition='left' placeholder='Password'></Input><br/>
-          <Input type="password" onChange={ event => {
+          }} icon='lock' iconPosition='left' placeholder='Password'></input><br/>
+          <input type="password" onChange={ event => {
             this.setState({confirmPass: event.target.value})
-          }} icon='lock' iconPosition='left' placeholder='Confirm Password'></Input><br/>
+          }} icon='lock' iconPosition='left' placeholder='Confirm Password'></input><br/>
           <PassCheck pass={this.state.password} confirm={this.state.confirmPass}/><br />
-          <Input type="text" onChange={ event => {
+          <input type="text" onChange={ event => {
             this.setState({email: event.target.value})
-          }}icon='inbox' iconPosition='left' placeholder='Email'></Input> <br />
-          <Button type="submit">
+          }}icon='inbox' iconPosition='left' placeholder='Email'></input> <br />
+          <button type="submit">
               Register Account
-            </Button>
+            </button>
           <StatusCheck status={this.props.userStatus} />
         </form>
       </div>

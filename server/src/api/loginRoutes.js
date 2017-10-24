@@ -11,15 +11,19 @@ router.post('/', async(ctx, next) => {
     const body = ctx.request.body
     console.log("USERNAME: " + body.username)
 
-    let query = User.findOneAndUpdate({username: body.username, password: body.password}, {token: uuidv4()})
+    let query = User.findOneAndUpdate({username: body.username, password: body.password}, {token: uuidv4()}, {returnNewDocument: true})
 
     let userEntry = await query
+    let admin = {}
+    userEntry.admin.forEach((org) => {
+      admin[org.url] = true
+    })
     ctx.status = 201
     ctx.body = {
       message: 'Success',
       username: body.username,
       token: userEntry.token,
-      admin: userEntry.admin
+      admin: admin
     }
 
   } catch (err) {
